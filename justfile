@@ -1,3 +1,4 @@
+set shell := ["cmd.exe", "/c"]
 
 default:
     bun run dev
