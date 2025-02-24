@@ -20,7 +20,6 @@
 </div> 
 
 
-
 <style>
 	:global(html, body) {
 		width: 100%;
