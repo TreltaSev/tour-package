@@ -3,5 +3,5 @@
 </script>
 
 <Page.Root>
-	<Span>Testing This is an amazing uypdate</Span>
+	<Span>Testing This is an amazing update</Span>
 </Page.Root>
