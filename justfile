@@ -20,5 +20,5 @@ release MESSAGE:
 # Push your project 
 push MESSAGE:
     git add .
-    git commit -m "{{MESSAGE}}"
+    git commit -m {{MESSAGE}}
     git push
