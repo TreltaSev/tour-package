@@ -14,7 +14,7 @@ stack NAME='testing':
 # Push your project with the release flag
 release MESSAGE:
     git add .
-    git commit -m "[release] {{MESSAGE}} "
+    git commit -m "[release] {{MESSAGE}}"
     git push
 
 # Push your project 
