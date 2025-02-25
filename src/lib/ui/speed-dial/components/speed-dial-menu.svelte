@@ -45,24 +45,27 @@
 		});
 	}
 
-	function onoutclick(event: CustomEvent) {
+	function onoutclick(event: CustomEvent | MouseEvent) {
 		if ($parentActive$) {
 			parentActive$?.toggle(false);
 		}
 	}
 </script>
 
-<div bind:this={anchor} class={cn('relative', anchorClass)}>
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<div bind:this={anchor} class={cn('relative', anchorClass)} on:mouseleave={onoutclick}>
 	<button bind:this={anchor} class="relative z-1" on:click={() => isActive$.toggle()}>
 		<slot name="anchor" />
 	</button>
 </div>
 
+<!-- svelte-ignore a11y_no_static_element_interactions -->
 <div
 	bind:this={menu}
 	use:portal={anchor}
 	use:directives
 	on:outclick={onoutclick}
+	on:mouseleave={onoutclick}
 	class={cn(
 		'w-fit h-fit absolute z-0',
 		...menu_class,

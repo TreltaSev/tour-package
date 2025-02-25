@@ -14,7 +14,7 @@
 export function directives(node: Node) {
 	const handleClick = (event: MouseEvent) => {
 		if (!node.contains(event.target as Node)) {
-			node.dispatchEvent(new CustomEvent('outclick'));
+			node.dispatchEvent(new CustomEvent('outclick', {detail: {mouseEvent: event}}));
 		}
 	};
 
