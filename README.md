@@ -8,7 +8,7 @@ Everything you need to setup a github static page using sveltekit and tailwindcs
 
 ## Setup Development
 ```bash
-just setup [bun|npm|pnpm] # setup the project with the package manager of your choice, defaults to bun   
+just setup [bun|npm|pnpm] # setup the project with the package manager of your choice, defaults to bun    
 ```
 
 ## Release
