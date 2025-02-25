@@ -9,12 +9,12 @@ setup PACKAGE_MANAGER='bun':
 
 # Run something, im not sure what
 stack NAME='testing':
-    echo "Running Stack Command! {{NAME}}"
+    echo "Running Stack Command! {{NAME}} "
 
 # Push your project with the release flag
 release MESSAGE:
     git add .
-    git commit -m "[release] {{MESSAGE}}"
+    git commit -m "[release] {{MESSAGE}} "
     git push
 
 # Push your project 
