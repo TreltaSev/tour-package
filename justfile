@@ -1,4 +1,4 @@
-
+set shell := ["powershell"]
 
 default:
     bun run dev
