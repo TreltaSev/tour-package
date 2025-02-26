@@ -35,16 +35,16 @@
 	--font-lato: Lato, Tahoma, sans-serif;
 
 	/* Colors as well */
-	--color-primary-100: #d9e8f9;
-	--color-primary-200: #b3d1f4;
-	--color-primary-300: #8cb9ee;
-	--color-primary-400: #66a2e9;
-	--color-primary-500: #408be3;
-	--color-primary-600: #336fb6;
-	--color-primary-700: #265388;
-	--color-primary-800: #1a385b;
-	--color-primary-900: #0d1c2d;
-	--color-primary-950: #071626;
+	--color-primary-100: #E7F8FE;
+	--color-primary-200: #CEF0FD;
+	--color-primary-300: #BBEBFC;
+	--color-primary-400: #A2E3FB;
+	--color-primary-500: #8ADCFA;
+	--color-primary-600: #40C6F7;
+	--color-primary-700: #0AA8E1;
+	--color-primary-800: #066D93;
+	--color-primary-900: #033749;
+	--color-primary-950: #021D27;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
