@@ -24,27 +24,68 @@
 }
 
 /*
+------------------ BASE ------------------ 
+    ~Usage~
+        Root level component styling, mainly
+		for default html tags.
+*/
+@layer base {
+	option,
+	span,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply text-gray-900 dark:text-white;
+		font-family: Lato, 'Courier New', Courier, monospace;
+	}
+}
+
+/*
 ------------------ THEME ------------------ 
     ~Usage~
         The themes directive allows us to add custom "design tokens" like
 		fonts, colors, and breakpoints into this project
 */
 @theme {
-
 	/* For example, we can define out lato font like so */
 	--font-lato: Lato, Tahoma, sans-serif;
 
 	/* Colors as well */
-	--color-primary-100: #E7F8FE;
-	--color-primary-200: #CEF0FD;
-	--color-primary-300: #BBEBFC;
-	--color-primary-400: #A2E3FB;
-	--color-primary-500: #8ADCFA;
-	--color-primary-600: #40C6F7;
-	--color-primary-700: #0AA8E1;
-	--color-primary-800: #066D93;
+	--color-primary-100: #e7f8fe;
+	--color-primary-200: #cef0fd;
+	--color-primary-300: #bbebfc;
+	--color-primary-400: #a2e3fb;
+	--color-primary-500: #8adcfa;
+	--color-primary-600: #40c6f7;
+	--color-primary-700: #0aa8e1;
+	--color-primary-800: #066d93;
 	--color-primary-900: #033749;
-	--color-primary-950: #021D27;
+	--color-primary-950: #021d27;
+}
+
+/*
+------------------ UTILITIES ------------------ 
+    ~Usage~
+	These are classes that could be used project-wide.
+*/
+@layer utilities {
+}
+
+@utility animate-* {
+	@apply ease-in-out;
+	transition-duration: --value(*ms); /* transition-duration: (x)ms; */
+}
+
+/*
+------------------ COMPONENTS ------------------ 
+    ~Usage~
+	These stylings are used for one specific svelte-kit component
+*/
+@layer components {
+	
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

@@ -13,7 +13,7 @@
 	// -=-=-=-=- Props -=-=-=-=- //
 	type $$Props = ItemProps & tFlexProps;
 	let className: $$Props['class'] = undefined;
-	export let el: $$Props['el'] = undefined;	
+	export const el: $$Props['el'] = undefined;	
 	export { className as class }
 
 </script>
