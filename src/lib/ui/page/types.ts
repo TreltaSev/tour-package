@@ -8,5 +8,3 @@ export type tPageProps = HTMLAttributes<HTMLDivElement> & {
     leftComponent?: any,
     rightComponent?: any
 }
-
-export type tPageNavigationProps = HTMLAttributes<HTMLDivElement>;
