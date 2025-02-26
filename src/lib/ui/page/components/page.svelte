@@ -10,19 +10,24 @@
 	let {
 		children,
 		class: className,
-		pageClass = 'flex flex-col size-full items-center justify-center select-none z-2 px-90 box-border h-fit',
-		hideNav = $bindable(false)
-	}: Props & any = $props();
+		pageClass = 'flex flex-col size-full',
+		topComponent = $bindable(undefined),
+		leftComponent = $bindable(undefined),
+		rightComponent = $bindable(undefined)
+	}: Props = $props();
 
-	let pageCls = $state("")
+	let pageCls = $state('');
 
 	$effect(() => {
 		pageCls = cn(pageClass, className);
-	})
-
+	});
 </script>
 
 <Flex.Col class={pageCls}>
+	<!-- Navigation Bar -->
+
+	{@render topComponent?.()}
+
 	{@render children?.()}
 
 	<!-- Speed Dial -->
