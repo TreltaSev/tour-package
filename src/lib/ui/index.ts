@@ -1,4 +1,5 @@
 export * as Flex from './flex';
+export * as Form from './form';
 export * as Page from './page';
 export * as SpeedDial from './speed-dial';
 
