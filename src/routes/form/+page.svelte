@@ -44,5 +44,5 @@
     <input type="checkbox" id="car" name="car" value="car">
     <label for="car" style="color:white;">Car Rental</label>
     <br><br>
-    <button type="submit" form="tour" value="Submit" style="color:white;">Process Request</button>
+    <button type="submit" value="Submit" style="color:white;">Process Request</button>
 </form>
