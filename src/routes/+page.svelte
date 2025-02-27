@@ -4,6 +4,10 @@
 	// This is where functional logic is, for main pages this might not be used
 </script>
 
+<svelte:head>
+    <title>Main Page</title>
+</svelte:head>
+
 <Page.Root>
     <!-- This is the actual Page Content -->
      <h1 class="text-center text-8xl">MAUI</h1>
