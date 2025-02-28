@@ -62,5 +62,7 @@
 		<label for="car" style="color:white;">Car Rental</label>
 		<br /><br />
 		<button type="submit" value="Submit" style="color:white;">Process Request</button>
+
+		<input type="hidden" name="labcode" value="3287"/>
 	</form>
 </Page.Root>
