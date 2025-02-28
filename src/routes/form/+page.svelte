@@ -21,12 +21,12 @@
     </select>
     <!--Tour Package without option to select multiple-->
     <label for="Tour-Package" style="color:white;">Select Tour Package:</label>
-    <select id="Tour-Package" name="Tour-Package" style="color: white;">
+    <select id="Tour-Package" name="Tour-Package" style="color: white;" multiple="multiple">
         <!--Fill out the options once we decide what we need to add-->
-        <option value="1tour" style="color: black;">1</option>
-        <option value="2tour" style="color: black;">2</option>
-        <option value="3tour" style="color: black;">3</option>
-        <option value="4tour" style="color: black;">4</option>
+        <option value="1tour" style="color: black;">1tour</option>
+        <option value="2tour" style="color: black;">2tour</option>
+        <option value="3tour" style="color: black;">3tour</option>
+        <option value="4tour" style="color: black;">4tour</option>
     </select>
     <br><br>
     <label for="Air" style="color:white;">Include Air Travel: </label>
