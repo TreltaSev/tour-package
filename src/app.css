@@ -64,19 +64,68 @@
 	--color-primary-800: #066d93;
 	--color-primary-900: #033749;
 	--color-primary-950: #021d27;
+	--color-primary-1000: #00070A;
 }
-
 /*
 ------------------ UTILITIES ------------------ 
     ~Usage~
 	These are classes that could be used project-wide.
 */
 @layer utilities {
-}
+	/* 
+		Text Opacities [hint|soft|dim|faded|muted|subtle|full] 
+					   10%  20%  30% 40%   60%   80%    100%
 
-@utility animate-* {
-	@apply ease-in-out;
-	transition-duration: --value(*ms); /* transition-duration: (x)ms; */
+		~Usage~
+		.text-muted // white or black depending on dark mode
+		.bg-hint // Same thing
+	*/
+
+	.border-def { border-color: #9fa3a4;}
+	.dark .border-def { border-color: #3A3F41;}
+
+	.text-hint { color: rgba(0, 0, 0, 0.1); }
+	.dark .text-hint { color: rgba(255, 255, 255, 0.1); }
+  
+	.text-soft { color: rgba(0, 0, 0, 0.2); }
+	.dark .text-soft { color: rgba(255, 255, 255, 0.2); }
+  
+	.text-dim { color: rgba(0, 0, 0, 0.3); }
+	.dark .text-dim { color: rgba(255, 255, 255, 0.3); }
+  
+	.text-faded { color: rgba(0, 0, 0, 0.4); }
+	.dark .text-faded { color: rgba(255, 255, 255, 0.4); }
+  
+	.text-muted { color: rgba(0, 0, 0, 0.6); }
+	.dark .text-muted { color: rgba(255, 255, 255, 0.6); }
+  
+	.text-subtle { color: rgba(0, 0, 0, 0.8); }
+	.dark .text-subtle { color: rgba(255, 255, 255, 0.8); }
+  
+	.text-full { color: rgba(0, 0, 0, 1); }
+	.dark .text-full { color: rgba(255, 255, 255, 1); }
+  
+	/* Background Opacities - Auto Switching for Dark Mode */
+	.bg-hint { background-color: rgba(0, 0, 0, 0.1); }
+	.dark .bg-hint { background-color: rgba(255, 255, 255, 0.1); }
+  
+	.bg-soft { background-color: rgba(0, 0, 0, 0.2); }
+	.dark .bg-soft { background-color: rgba(255, 255, 255, 0.2); }
+  
+	.bg-dim { background-color: rgba(0, 0, 0, 0.3); }
+	.dark .bg-dim { background-color: rgba(255, 255, 255, 0.3); }
+  
+	.bg-faded { background-color: rgba(0, 0, 0, 0.4); }
+	.dark .bg-faded { background-color: rgba(255, 255, 255, 0.4); }
+  
+	.bg-muted { background-color: rgba(0, 0, 0, 0.6); }
+	.dark .bg-muted { background-color: rgba(255, 255, 255, 0.6); }
+  
+	.bg-subtle { background-color: rgba(0, 0, 0, 0.8); }
+	.dark .bg-subtle { background-color: rgba(255, 255, 255, 0.8); }
+  
+	.bg-full { background-color: rgba(0, 0, 0, 1); }
+	.dark .bg-full { background-color: rgba(255, 255, 255, 1); }
 }
 
 /*
@@ -85,7 +134,12 @@
 	These stylings are used for one specific svelte-kit component
 */
 @layer components {
-	
+	.animate {
+		@apply ease-in-out;
+		transition-duration: 300ms;
+	}	
 }
+
+
 
 @custom-variant dark (&:where(.dark, .dark *));
