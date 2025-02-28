@@ -1,6 +1,7 @@
 <script lang="ts">
 	// --- Components ---
-	import { Flex, Span } from '@ui';
+	import { Flex, Separator, Span } from '@ui';
+	import IconArrow from '~icons/weui/arrow-filled';
 
 	// --- Logic ---
 	import { cn } from '@lib/utils';
@@ -14,50 +15,75 @@
 	let {
 		children,
 		class: className,
-        backdropClass = $bindable('fixed left-0 top-0 size-full bg-black/40 backdrop-blur-xl'),
-		menuClass = $bindable('flex flex-col w-[300px] h-full bg-black/20 '),
+		menuClass = $bindable(
+			'animate shrink-0 overflow-hidden flex flex-col w-[300px] h-full bg-black/20 border-solid border-0 border-r border-def'
+		),
 
-        classBackdrop,
+		classBackdrop,
 		...rest
 	}: MenuProps = $props();
 
 	// Setup Menu's class
-    let backdropCls = $state(cn(backdropClass, classBackdrop))
 	let menuCls = $state(cn(menuClass, className));
 	$effect(() => {
-        backdropCls = cn(backdropClass, classBackdrop)
 		menuCls = cn(menuClass, className);
 	});
 
 	// Get Drawer Context
 	const { show$ } = getCtx();
-	$effect(() => {
-		console.log($show$);
-	});
 
-    function slide(node: HTMLElement, params: {duration?: number} = {}) {
-        const existingTransform = getComputedStyle(node).transform.replace('none', '');
-     
-        return {
-            duration: params.duration || 300,
-            easing: cubicInOut,
-            css: (t: number) => `transform: ${existingTransform} translateX(${(1-t) * -300}px;`
-        }
-    }
+	function slide(node: HTMLElement, params: { duration?: number } = {}) {
+		const existingTransform = getComputedStyle(node).transform.replace('none', '');
 
-    function closeDrawer() {
-        show$.set(false)
-    }
+		return {
+			duration: params.duration || 300,
+			easing: cubicInOut,
+			css: (t: number) => `transform: ${existingTransform} translateX(${(1 - t) * -300}px;`
+		};
+	}
+
+	function closeDrawer() {
+		show$.set(false);
+	}
+
+	function openDrawer() {
+		show$.set(true);
+	}
+
+	function toggleDrawer() {
+		show$.update((current_show) => {
+			return !current_show;
+		});
+	}
 </script>
 
 <!-- Actual Menu -->
-<div use:directives class={menuCls} onoutclick={() => closeDrawer()}>
-	<Flex.Col class="w-full py-4 items-center box-border">
-		<Span class="text-2xl">This is a drawer</Span>
+<div use:directives class={cn(menuClass, !$show$ && 'w-[60px]')} onoutclick={() => closeDrawer()}>
+	<Flex.Col class={cn('size-15 w-full justify-center box-border')}>
+		{#if $show$}
+			<div transition:fade={{ duration: 150 }}>
+				<span class="text-2xl w-full whitespace-nowrap">This is a drawer</span>
+			</div>
+		{/if}
 	</Flex.Col>
-	{@render children?.()}
-	<Flex.Row>
-		
+
+	<!-- Children-->
+	<Flex.Col class={cn('animate shrink-0 w-15 box-border pl-[10px]', $show$ && 'px-8 w-full')}>
+		{@render children?.()}
+	</Flex.Col>
+
+	<Separator />
+
+	<!-- Minimize Section -->
+	<Flex.Row
+		class="h-15 w-full p-4 box-border items-center gap-5 text-faded border-solid border-0 border-t border-def select-none"
+		onclick={() => toggleDrawer()}
+	>
+		<IconArrow class={cn('animate size-6 shrink-0 rotate-180', !$show$ && 'rotate-0')} />
+
+		{#if $show$}
+			<span class="text-faded" transition:fade>Minimize</span>
+		{/if}
 	</Flex.Row>
 </div>
 <!--@component

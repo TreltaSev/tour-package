@@ -1,29 +1,36 @@
-import type { ClassValue, HTMLAttributes, HTMLButtonAttributes } from "svelte/elements";
+import type { ClassValue, HTMLAttributes } from 'svelte/elements';
 
 export type tDrawerProps = HTMLAttributes<HTMLDivElement> & {
-    // Extra Props Here:
+	// Extra Props Here:
 
-    // Component Classes
-    drawerClass?: ClassValue 
+	// Component Classes
+	drawerClass?: ClassValue;
 
-    // Component Props
-    active?: boolean
+	// Component Props
+	active?: boolean;
 };
-export type tDrawerAnchorProps = HTMLButtonAttributes & {
-    // Extra Props Here:
 
-    // Component Classes
-    anchorClass?: ClassValue 
-};
 export type tDrawerMenuProps = HTMLAttributes<HTMLDivElement> & {
-    // Extra Props Here:
+	// Extra Props Here:
 
-    // Component Classes
+	// Component Classes
 
-    // Default Classes
-    backdropClass?: ClassValue,    
-    menuClass?: ClassValue
+	// Default Classes
+	backdropClass?: ClassValue;
+	menuClass?: ClassValue;
 
-    // User Defined Classes
-    classBackdrop?: ClassValue
+	// User Defined Classes
+	classBackdrop?: ClassValue;
+};
+export type tDrawerItemProps = HTMLAttributes<HTMLDivElement> & {
+	// Extra Props Here:
+    href?: string;
+    
+	// Component Classes
+
+	// Default Classes
+	itemClass?: ClassValue;
+
+	// Component Slots
+	slot_text?: CallableFunction;
 };
