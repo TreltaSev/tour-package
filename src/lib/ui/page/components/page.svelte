@@ -2,7 +2,7 @@
 	import { cn } from '@lib/utils';
 	import type { Props } from '..';
 
-	import { Flex, Page } from '@ui';
+	import { Drawer, Flex, Page } from '@ui';
 	import { SpeedDial } from '@components';
 
 	// -=-=-=-=- Props -=-=-=-=- //
@@ -23,13 +23,21 @@
 	});
 </script>
 
-<Flex.Col class={pageCls}>
-	<!-- Navigation Bar -->
+<Flex.Row class="size-full">
+	<Drawer.Root active={true}>
+		<Drawer.Menu>
+			<span>...</span>
+		</Drawer.Menu>
+	</Drawer.Root>
 
-	{@render topComponent?.()}
+	<Flex.Col class={pageCls}>
+		<!-- Navigation Bar -->
 
-	{@render children?.()}
+		{@render topComponent?.()}
 
-	<!-- Speed Dial -->
-	<SpeedDial />
-</Flex.Col>
+		{@render children?.()}
+
+		<!-- Speed Dial -->
+		<SpeedDial />
+	</Flex.Col>
+</Flex.Row>
