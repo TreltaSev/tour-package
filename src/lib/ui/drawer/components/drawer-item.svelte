@@ -3,6 +3,7 @@
 	import { Flex } from '@ui';
 
 	// --- Logic ---
+	import { base } from "$app/paths"
 	import { cn } from '@lib/utils';
 	import type { ItemProps } from '..';
 	import { getCtx } from '../ctx';
@@ -32,6 +33,8 @@
 	$effect(() => {
 		itemCls = cn(itemClass, className);
 	});
+
+	href = base + href
 
 	// Get Drawer Context
 	const { show$ } = getCtx();
