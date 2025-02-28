@@ -27,7 +27,7 @@ tComponentProps = {}
 ```
 
 ### In-Component Logic Guidelines
-Use as many comments as you can, especially for logic (unless its obvious)
+Use as many comments as you can, especially for logic (unless its obvious) 
 
 #### Bad Example
 ```svelte
