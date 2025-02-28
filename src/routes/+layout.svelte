@@ -15,7 +15,7 @@
 
 </script>
 
-<div class="bg-primary-100 dark:bg-primary-900 size-full">
+<div class="bg-primary-100 dark:bg-primary-950 size-full">
     {@render children?.()}
 </div> 
 
