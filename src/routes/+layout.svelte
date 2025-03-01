@@ -1,9 +1,18 @@
 <script lang="ts">
-    let { children } = $props();
 
-    import "../app.css"
+	// --- Styling ---
+	import '../app.css';
 
-    import { global_mode$ } from '@lib/stores/mode';
+	// --- Components ---
+	import { Page } from '@ui';
+
+	// --- Logic ---
+	import { fade } from 'svelte/transition';
+	import { sineInOut } from 'svelte/easing';
+
+	// Props/state
+	let { children, data } = $props();
+	import { global_mode$ } from '@lib/stores/mode';		
 	let mode$ = global_mode$.mode$;
 
 	// Apply the class on subscription update
@@ -12,17 +21,24 @@
 			document.documentElement.classList.toggle('dark', v === 'dark');
 		}
 	});
-
 </script>
 
-<div class="bg-primary-100 dark:bg-primary-950 size-full">
-    {@render children?.()}
-</div> 
-
+{#key data.url}
+	<Page.Root class="overflow-hidden bg-primary-100 dark:bg-primary-950">
+		<div
+			in:fade={{ duration: 300, delay: 300, easing: sineInOut }}
+			out:fade={{ duration: 300, easing: sineInOut }}
+			class="bg-primary-100 dark:bg-primary-950 size-full transition-all"
+		>
+			{@render children?.()}
+		</div>
+	</Page.Root>
+{/key}
 
 <style>
 	:global(html, body) {
 		width: 100%;
 		height: 100%;
+		overflow: hidden;
 	}
 </style>
