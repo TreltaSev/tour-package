@@ -9,3 +9,19 @@ export type tFscrollableProps = HTMLAttributes<HTMLDivElement> & {
     // Extra Props Here:
 
 };
+export type tFscrollableViewProps = HTMLAttributes<HTMLDivElement> & {
+    // Classes:
+
+    // --- Default Classes:
+    viewClass?: ClassValue,
+    
+    // Extra Props Here:
+};
+export type tFscrollableBackdropProps = HTMLAttributes<HTMLDivElement> & {
+    // Classes:
+
+    // --- Default Classes:
+    backdropClass?: ClassValue,
+    
+    // Extra Props Here:
+};
