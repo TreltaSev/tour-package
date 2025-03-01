@@ -12,7 +12,6 @@
 		children,
 		class: className,
 		drawerClass = $bindable(''),
-		active = $bindable(false)
 	}: Props = $props();
 
 	// Setup Drawer's class

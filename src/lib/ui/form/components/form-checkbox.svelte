@@ -46,8 +46,6 @@
         } else {
             inputValue = "no"
         }
-
-        console.log(value, inputValue)
 	}
 </script>
 
