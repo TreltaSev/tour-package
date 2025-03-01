@@ -24,7 +24,7 @@
 	const { show$, toggle_drawer } = getCtx();
 </script>
 
-<Flex.Row class={cn('w-full group hamburger')} data-state={($show$ && 'toggled') || 'un-toggled'}>
+<Flex.Row class={cn('w-full group hamburger pb-3')} data-state={($show$ && 'toggled') || 'un-toggled'}>
 	<Separator />
 	<Flex.Col
 		class={cn(

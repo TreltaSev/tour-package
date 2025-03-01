@@ -43,7 +43,7 @@
 	<Drawer.Hamburger/>
 
 	<!-- Children-->
-	<Flex.Col class={cn('animate shrink-0 w-15 box-border pl-[10px]', $show$ && 'px-8 w-full')}>
+	<Flex.Col class={cn('animate shrink-0 w-15 box-border pl-[10px] gap-3', $show$ && 'px-8 w-full')}>
 		{@render children?.()}
 	</Flex.Col>
 
