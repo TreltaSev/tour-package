@@ -10,6 +10,7 @@
 	import { directives } from '@root/lib/internal/directives';
 
 	let {
+		data,
 		children,
 		class: className,
 		menuClass = $bindable(
@@ -31,9 +32,9 @@
 	$effect(() => {
 		menuCls = cn(menuClass, className);
 	});
-
+	
 	// Get Drawer Context
-	const { show$, close_drawer, toggle_drawer } = getCtx();
+	const { show$, close_drawer } = getCtx();
 </script>
 
 <!-- Actual Menu -->

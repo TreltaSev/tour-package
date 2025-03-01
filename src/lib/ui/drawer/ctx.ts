@@ -5,7 +5,15 @@ import { writable, type Writable } from 'svelte/store';
 import type { tDrawerProps } from './types';
 
 export function createDrawerData(properties: tDrawerProps) {
-	const show$: Writable<boolean> = writable(false);
+	const show$: Writable<boolean> = writable(sessionStorage.getItem("drawer-show") ? true : false);
+
+	show$.subscribe((state_show) => {
+		if (state_show) {
+			sessionStorage.setItem("drawer-show", "yes")
+		} else {
+			sessionStorage.removeItem("drawer-show")
+		}
+	})
 
 	// Close Drawer Function
 	function close_drawer() {
