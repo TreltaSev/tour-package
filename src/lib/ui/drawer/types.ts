@@ -34,3 +34,7 @@ export type tDrawerItemProps = HTMLAttributes<HTMLDivElement> & {
 	// Component Slots
 	slot_text?: CallableFunction;
 };
+
+export type tDrawerHamburgerProps = HTMLAttributes<HTMLDivElement> & {
+    // Extra Props Here:
+};

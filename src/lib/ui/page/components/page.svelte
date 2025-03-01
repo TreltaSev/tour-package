@@ -29,12 +29,9 @@
 </script>
 
 <Flex.Row class="size-full">
-	
 	<!-- Drawer -->
 	<Drawer.Root active={true}>
 		<Drawer.Menu>
-			<span>...</span>
-
 			<Drawer.Item href="/">
 				<IconHome class="size-6 shrink-0" />
 				{#snippet slot_text()}
