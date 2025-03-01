@@ -2,6 +2,7 @@
 	// --- Components ---
 	import { Flex, Separator, Span } from '@ui';
 	import IconArrow from '~icons/weui/arrow-filled';
+	import IconHamburger from '~icons/pajamas/hamburger';
 
 	// --- Logic ---
 	import { cn } from '@lib/utils';
@@ -16,7 +17,7 @@
 		children,
 		class: className,
 		menuClass = $bindable(
-			'animate shrink-0 overflow-hidden flex flex-col w-[300px] h-full bg-black/20 border-solid border-0 border-r border-def'
+			'animate shrink-0 overflow-hidden flex flex-col w-[300px] h-full bg-black/20 border-solid border-0 border-r border-def bg-primary-500'
 		),
 
 		classBackdrop,
@@ -65,6 +66,11 @@
 				<span class="text-2xl w-full whitespace-nowrap">This is a drawer</span>
 			</div>
 		{/if}
+	</Flex.Col>
+
+	<!-- Hamborgor icon -->
+	<Flex.Col class="size-15 bg-red-200 rounded-md">
+		<IconHamburger class="size-4 shrink-0"/>
 	</Flex.Col>
 
 	<!-- Children-->
