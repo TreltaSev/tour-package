@@ -1,4 +1,4 @@
-# Sveltekit Static Github Page Template
+# Sveltekit Static Github Page Template 
 
 Everything you need to setup a github static page using sveltekit and tailwindcss
 
