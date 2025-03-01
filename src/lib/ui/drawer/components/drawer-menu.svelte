@@ -18,6 +18,7 @@
 			flex flex-col 
 			w-[300px] h-full 
 			bg-primary-500
+			pt-[10px]
 			border-solid border-0 border-r border-def`
 		),
 
@@ -36,14 +37,7 @@
 </script>
 
 <!-- Actual Menu -->
-<div use:directives class={cn(menuClass, !$show$ && 'w-[60px]')} onoutclick={() => close_drawer()}>
-	<Flex.Col class={cn('size-15 w-full justify-center box-border')}>
-		{#if $show$}
-			<div transition:fade={{ duration: 150 }}>
-				<span class="text-2xl w-full whitespace-nowrap">This is a drawer</span>
-			</div>
-		{/if}
-	</Flex.Col>
+<div use:directives class={cn(menuClass, !$show$ && 'w-[60px]' || "pt-6")} onoutclick={() => close_drawer()}>
 
 	<!-- Hamborgor Button -->
 	<Drawer.Hamburger/>
