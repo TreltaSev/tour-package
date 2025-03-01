@@ -1,0 +1,28 @@
+@import 'tailwindcss';
+
+/*
+Basically, here all we do is move the top bar
+and the bottom bar to the middle bar. hide
+the middle bar then rotate the top and bottom bar by
+-45 and 45 deg respectively.
+*/
+
+.hamburger[data-state='toggled'] {
+	rect {
+		transform-origin: center;
+	}
+
+	rect.bar-1 {
+		y: 11;
+		rotate: -45deg;
+	}
+
+	rect.bar-2 {
+		opacity: 0;
+	}
+
+	rect.bar-3 {
+		y: 11;
+		rotate: 45deg;
+	}
+}

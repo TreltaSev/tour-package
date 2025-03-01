@@ -1,4 +1,8 @@
 <script lang="ts">
+
+	// --- Styling ---
+	import "./drawer.css"
+	
 	// --- Logic ---
 	import { cn } from '@lib/utils';
 	import type { Props } from '..';

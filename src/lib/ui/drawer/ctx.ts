@@ -7,9 +7,28 @@ import type { tDrawerProps } from './types';
 export function createDrawerData(properties: tDrawerProps) {
 	const show$: Writable<boolean> = writable(false);
 
+	// Close Drawer Function
+	function close_drawer() {
+		show$.set(false);
+	}
+
+	// Open Drawer Function
+	function open_drawer() {
+		show$.set(true)
+	}
+
+	function toggle_drawer() {
+		show$.update((current_show) => {
+			return !current_show
+		})
+	}
+
 	return {
 		...properties,
-		show$
+		show$,
+		close_drawer,
+		open_drawer,
+		toggle_drawer,
 	};
 }
 
