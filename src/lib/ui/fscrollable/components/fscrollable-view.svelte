@@ -3,6 +3,7 @@
     // --- Logic ---
     import { cn } from '@lib/utils';
     import type { ViewProps } from ".."
+	import { getCtx, setViewCtx } from '../ctx';
     
     let {
         children,
@@ -16,6 +17,11 @@
     $effect(() => {
         viewCls = cn(viewClass, className)
     })
+
+    // Get Root & Set View Context
+    const { state$ } = getCtx();
+    const { otherstate$ } = setViewCtx({});
+
 
 </script>
 

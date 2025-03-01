@@ -3,6 +3,7 @@
     // --- Logic ---
     import { cn } from '@lib/utils';
     import type { Props } from ".."
+	import { setCtx } from '../ctx';
     
     let {
         children,
@@ -16,6 +17,9 @@
     $effect(() => {
         fscrollableCls = cn(fscrollableClass, className)
     })
+
+    // Set Root Context
+    setCtx({});
 
 </script>
 
