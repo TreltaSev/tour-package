@@ -4,11 +4,14 @@
     import { cn } from '@lib/utils';
     import type { Props } from ".."
 	import { setCtx } from '../ctx';
+	import { clamp } from '@root/lib/internal';
     
     let {
         children,
         class: className,
-        fscrollableClass = $bindable('')
+        fscrollableClass = $bindable(`
+            size-full
+        `)
     }: Props = $props();
 
 
@@ -19,11 +22,23 @@
     })
 
     // Set Root Context
-    setCtx({});
+    const { root_height$, scroll_delta$, combined_height$ } = setCtx({});
+
+
+    function onwheel(event: WheelEvent) {
+        scroll_delta$.update(c_scroll_delta => {
+            return clamp(c_scroll_delta + (Math.floor(event.deltaY/8)), 0, $combined_height$)
+        })
+    }
+    
+    let height: number = $state(window.innerHeight)
+    $effect(() => {
+        root_height$.set(height)
+    })
 
 </script>
 
-<div class={ fscrollableCls }>
+<div class={ fscrollableCls } {onwheel} bind:offsetHeight={height}>
     {@render children?.()}
 </div>
 

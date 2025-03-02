@@ -1,18 +1,29 @@
 import { removeUndefined } from '@root/lib/internal';
 import { getContext, setContext } from 'svelte';
-import { writable, type Writable } from 'svelte/store';
+import { derived, get, readable, writable, type Readable, type Writable } from 'svelte/store';
 import type { tFscrollableProps } from './types';
-
-
 
 // --- Root Level Context
 
 export function createFScrollableData(props: tFscrollableProps) {
 	const state$: Writable<boolean> = writable(false);
+	const view_count$: Writable<number> = writable(0);
+	const root_height$: Writable<number> = writable(window.innerHeight);
+	const combined_height$: Writable<number> = writable(0);
+	const scroll_delta$: Writable<number> = writable(0);
+
+	view_count$.subscribe((c_view_count) => {
+		console.log(c_view_count, get(root_height$));
+		combined_height$.set(c_view_count * get(root_height$));
+	});
 
 	return {
 		...props,
-		state$
+		state$,
+		view_count$,
+		root_height$,
+		combined_height$,
+		scroll_delta$
 	};
 }
 
@@ -46,24 +57,48 @@ export function getCtx() {
 
 // --- View Component Level Context
 
-export function createFScrollableViewData(props: tFscrollableProps) {
-	const otherstate$: Writable<boolean> = writable(false);
+export function createFScrollableViewData(props: { order?: number } = {}) {
+	const { root_height$ } = getCtx();
+	console.log(props.order);
+	const order$ = readable(props.order || 1);
+	const is_shown$: Writable<boolean> = writable(false);
+	const start_position$: Readable<number> = derived(root_height$, ($root_height) => {
+		return ((get(order$) || 1) - 1) * $root_height;
+	});
+
+	const transition_progress$: Writable<number> = writable(0);
+	const in_transition_progress$: Writable<number> = writable(0);
+	const out_transition_progress$: Writable<number> = writable(0);
+
+	const default_in_start$: Writable<number> = writable(0);
+	const default_in_end$: Writable<number> = writable(0.5);
+	const default_out_start$: Writable<number> = writable(0.5);
+	const default_out_end$: Writable<number> = writable(1);
 
 	return {
 		...props,
-		otherstate$
+		order$,
+		is_shown$,
+		start_position$,
+		transition_progress$,
+		in_transition_progress$,
+		out_transition_progress$,
+		default_in_start$,
+		default_in_end$,
+		default_out_start$,
+		default_out_end$
 	};
 }
 
 export function getFScrollableViewData() {
-	const NAME = 'drawer-data' as const;
+	const NAME = 'drawer-view-data' as const;
 
 	return {
 		NAME
 	};
 }
 
-export function setViewCtx(properties: tFscrollableProps = {}) {
+export function setViewCtx(properties: { order?: number } = {}) {
 	const { NAME } = getFScrollableViewData();
 
 	const fscrollable = {

@@ -3,8 +3,19 @@
 	import { cn } from '@lib/utils';
 	import type { BackdropProps } from '..';
 	import { getCtx, getViewCtx } from '../ctx';
+	import { onMount } from 'svelte';
 
-	let { children, class: className, backdropClass = $bindable('') }: BackdropProps = $props();
+	let {
+		children,
+		class: className,
+		backdropClass = $bindable(`
+			absolute top-0 left-0 z-0
+			size-full
+			[&>*]:select-none
+			
+		`),
+		el = $bindable(undefined)
+	}: BackdropProps = $props();
 
 	// Setup Backdrop's class
 	let backdropCls = $state(cn(backdropClass, className));
@@ -13,11 +24,12 @@
 	});
 
 	// Get Root & View Contexts
-	const { state$ } = getCtx();
-	const { otherstate$ } = getViewCtx();
+	const { state$, combined_height$ } = getCtx();	
+
+	
 </script>
 
-<div class={backdropCls}>
+<div class={backdropCls} bind:this={el}>
 	{@render children?.()}
 </div>
 
