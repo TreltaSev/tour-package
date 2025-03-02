@@ -40,10 +40,10 @@
 	<label for="Tour-Package" style="color:white;">Select Tour Package:</label>
 	<select id="Tour-Package" name="Tour-Package" style="color: white;" multiple="multiple">
 		<!--Fill out the options once we decide what we need to add-->
-		<option value="1tour" style="color: black;">1</option>
-		<option value="2tour" style="color: black;">2</option>
-		<option value="3tour" style="color: black;">3</option>
-		<option value="4tour" style="color: black;">4</option>
+		<option value="1tour" style="color: white;">1</option>
+		<option value="2tour" style="color: white;">2</option>
+		<option value="3tour" style="color: white;">3</option>
+		<option value="4tour" style="color: white;">4</option>
 	</select>
 	<br /><br />
 	<label for="Air" style="color:white;">Include Air Travel: </label>
