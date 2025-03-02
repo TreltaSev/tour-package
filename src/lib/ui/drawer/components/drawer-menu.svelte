@@ -18,7 +18,7 @@
 			shrink-0 overflow-hidden 
 			flex flex-col 
 			w-[300px] h-full 
-			bg-primary-500
+			bg-primary-800
 			pt-[10px]
 			border-solid border-0 border-r border-def`
 		),
