@@ -20,7 +20,7 @@ Adds all files, commits your message with git including the [release] flag, then
 ## Programming Guidelines
 
 ### Typescript Types
-Start with lowercase 't', followed by capitalized component name.
+Start with lowercase 't', followed by capitalized component name. 
 ```ts
 # Example
 tComponentProps = {}
