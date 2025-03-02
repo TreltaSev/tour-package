@@ -20,7 +20,8 @@ const config = {
 			"@root": "src/",
 			"@lib": "src/lib",
 			"@ui": "src/lib/ui",
-			"@components": "src/lib/components"
+			"@components": "src/lib/components",
+			"@assets": "src/assets"
 		}
 	}
 };
