@@ -9,6 +9,7 @@
 	import { Drawer, Flex, Page } from '@ui';
 	import { SpeedDial } from '@components';
 	import Span from '../../span/components/span.svelte';
+	import { setPageCtx } from '../ctx';
 
 	// -=-=-=-=- Props -=-=-=-=- //
 
@@ -26,27 +27,32 @@
 	$effect(() => {
 		pageCls = cn(pageClass, className);
 	});
+
+	// Set Context
+	const { hideDrawer$ } = setPageCtx({});
 </script>
 
 <main class="flex flex-row size-full">
 	<!-- Drawer -->
-	<Drawer.Root active={true}>
-		<Drawer.Menu>
-			<Drawer.Item href="/">
-				<IconHome class="size-6 shrink-0" />
-				{#snippet slot_text()}
-					<Span>Home</Span>
-				{/snippet}
-			</Drawer.Item>
+	{#if !$hideDrawer$}
+		<Drawer.Root active={true}>
+			<Drawer.Menu>
+				<Drawer.Item href="/">
+					<IconHome class="size-6 shrink-0" />
+					{#snippet slot_text()}k
+						<Span>Home</Span>
+					{/snippet}
+				</Drawer.Item>
 
-			<Drawer.Item href="/form">
-				<IconForm class="size-6 shrink-0" />
-				{#snippet slot_text()}
-					<Span>Form</Span>
-				{/snippet}
-			</Drawer.Item>
-		</Drawer.Menu>
-	</Drawer.Root>
+				<Drawer.Item href="/form">
+					<IconForm class="size-6 shrink-0" />
+					{#snippet slot_text()}
+						<Span>Form</Span>
+					{/snippet}
+				</Drawer.Item>
+			</Drawer.Menu>
+		</Drawer.Root>
+	{/if}
 
 	<Flex.Col class={pageCls}>
 		<!-- Navigation Bar -->

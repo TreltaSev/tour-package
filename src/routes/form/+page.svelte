@@ -18,7 +18,7 @@
 
 <Flex.Col class="size-full items-center">
 	<Flex.Col class="p-20 w-fit bg-primary-700 rounded-md mt-20">
-		<Form.Root class="w-80 gap-4" {onsubmit}>
+		<Form.Root class="w-80 gap-8" {onsubmit}>
 			<Form.Input
 				type="text"
 				name="first-name"
@@ -54,7 +54,7 @@
 				<option value="Volcano" style="color: black;">Volcano Package</option>
 				<option value="City" style="color: black;">City Package</option>
 			</select>
-			<br /><br />
+
 
 			<Form.Checkbox label="Include Air Travel" name="air-travel" />
 
@@ -62,9 +62,6 @@
 			<Form.Checkbox label="Evening Wine" name="wine" />
 			<Form.Checkbox label="Car Rental" name="car" />
 
-			<br /><br />
-			<!--Options in package-->
-			<br /><br />
 			<button
 				type="submit"
 				value="Submit"

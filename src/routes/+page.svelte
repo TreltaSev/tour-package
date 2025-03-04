@@ -19,7 +19,7 @@
 	<title>Main Page</title>
 </svelte:head>
 
-<FScrollable.Root>
+<FScrollable.Root class="bg-black">
 	<!-- First View -->
 	<FScrollable.View classContainer="items-center pt-20" id="first one">
 		{#snippet backdrop()}
@@ -58,25 +58,26 @@
 		</FScrollable.Affected>
 
 		<FScrollable.Affected
-			class="animate size-full absolute items-center justify-center flex flex-col"
+			class="animate size-full absolute items-center pt-40 flex flex-col"
 			in_start={0.25}
 			out_start={0.7}
 			in_transition={(p: number) => `opacity: ${p*4}`}
 			out_transition={(p: number) => `opacity: ${p*4}`}
 		>
-			<h1 class="text-white text-2xl absolute whitespace-nowrap">I appear half way through with a different easing function</h1>
+			<h1 class="text-white text-3xl whitespace-nowrap">Maui Travels</h1>
+			<span class="w-120 text-center text-lg text-white">Maui is the second-largest island in Hawaii and is known for its stunning landscapes, diverse ecosystems, and rich cultural heritage.</span>
 		</FScrollable.Affected>
 	</FScrollable.View>
 
 	<!-- ======================== Second View ======================== -->
-	<FScrollable.View classContainer="items-center pt-20" id="first one">
+	<FScrollable.View classContainer="items-center pt-20" id="first one" out_start={2} out_end={4}>
 		{#snippet backdrop()}
 			<FScrollable.Backdrop>
 				<FScrollable.Affected
 					class="size-full bg-cover ease-out bg-no-repeat bg-center"
 					style="background-image: url('{Image_MauiMountains}')"
 					in_end={0.3}
-					out_start={0.7}
+					out_start={2} out_end={4}
 					in_transition={(p: number) =>
 						`background-size: ${120 + (1 - p) * 320}%; background-position: ${50 + p * 50} 100%; opacity: ${clamp(p * 4, 0, 1)};`}
 					out_transition={(p: number) =>
@@ -89,8 +90,7 @@
 		<FScrollable.Affected
 			class="animate ease-out size-full absolute bottom-0 right-20"
 			in_end={0.3}
-			out_start={0.7}
-			out_end={0.8}
+			out_start={2} out_end={4}
 			in_transition={(p: number) => `top: ${window.innerHeight-(280*p)}px`}
 			out_transition={(p: number) => `top: ${window.innerHeight-280}px;opacity: ${p};`}
 		>
@@ -100,8 +100,7 @@
 
 		<FScrollable.Affected
 			class="animate size-full absolute items-center  flex flex-col"
-			in_start={0.25}
-			out_start={0.7}
+			out_start={2} out_end={4}
 			in_transition={(p: number) => `opacity: ${p*4}`}
 			out_transition={(p: number) => `opacity: ${p*4}`}
 		>

@@ -19,7 +19,7 @@
 		// Classes
 		class: className,
 		itemClass = $bindable(
-			'animate box-border px-2 box-border py-2 gap-3 items-center w-10 hover:bg-black/20 select-none rounded-md cursor-pointer text-white'
+			'animate box-border px-2 box-border py-2 gap-3 items-center w-10 hover:bg-black/20 select-none rounded-md cursor-pointer text-white dark:text-white'
 		),
 
 		// Component Slots
