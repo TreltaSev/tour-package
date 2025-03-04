@@ -2,6 +2,7 @@
 	// --- Components ---
 	import IconHome from '~icons/material-symbols/home-rounded';
 	import IconForm from '~icons/mdi/form';
+	import IconPackage from '~icons/mdi/transit-detour';
 
 	import { cn } from '@lib/utils';
 	import type { Props } from '..';
@@ -10,6 +11,7 @@
 	import { SpeedDial } from '@components';
 	import Span from '../../span/components/span.svelte';
 	import { setPageCtx } from '../ctx';
+	import DrawerItem from '../../drawer/components/drawer-item.svelte';
 
 	// -=-=-=-=- Props -=-=-=-=- //
 
@@ -39,8 +41,15 @@
 			<Drawer.Menu>
 				<Drawer.Item href="/">
 					<IconHome class="size-6 shrink-0" />
-					{#snippet slot_text()}k
+					{#snippet slot_text()}
 						<Span>Home</Span>
+					{/snippet}
+				</Drawer.Item>
+
+				<Drawer.Item href="/packages">
+					<IconPackage class="size-6 shrink-0"/>
+					{#snippet slot_text()}
+						<span>Packages</span>
 					{/snippet}
 				</Drawer.Item>
 
