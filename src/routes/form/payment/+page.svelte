@@ -6,6 +6,8 @@
 </script>
 
 {#if !data}
-    <Span></Span>
+   <Span>No data</Span>
+{:else}
+    <Span>{data['first-name']}</Span> 
 {/if}
 
