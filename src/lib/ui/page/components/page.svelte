@@ -17,9 +17,7 @@
 		children,
 		class: className,
 		pageClass = 'flex flex-col size-full',
-		topComponent = $bindable(undefined),
-		leftComponent = $bindable(undefined),
-		rightComponent = $bindable(undefined)
+		topComponent = $bindable(undefined)
 	}: Props = $props();
 
 	let pageCls = $state('');
