@@ -1,0 +1,1 @@
+<p style="color:white;">sample text</p>
