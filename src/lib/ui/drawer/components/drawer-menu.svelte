@@ -10,7 +10,6 @@
 	import { directives } from '@root/lib/internal/directives';
 
 	let {
-		data,
 		children,
 		class: className,
 		menuClass = $bindable(
