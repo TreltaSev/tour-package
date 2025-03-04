@@ -12,7 +12,7 @@
 
 		// Default Classes
 		containerClass = $bindable(''),
-		inputClass = $bindable('box-border w-fit rounded-sm p-2 bg-black/10 dark:bg-white'),
+		inputClass = $bindable('box-border w-full rounded-xs p-2 bg-black/10 dark:bg-white'),
 		labelClass = $bindable('text-[1rem] text-subtle'),
 
 		// User Defined Classes

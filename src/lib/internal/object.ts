@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export function removeUndefined<T extends object>(obj: T): T {
 	const result = {} as T;
 	for (const key in obj) {
@@ -7,6 +8,17 @@ export function removeUndefined<T extends object>(obj: T): T {
 		}
 	}
 	return result;
+}
+
+export function removeEmpty<T extends object>(obj: T): T {
+	const result = {} as T;
+	for (const key in obj) {
+		const value = obj[key];
+		if (value !== "") {
+			result[key] = value;
+		}
+	}
+	return result
 }
 
 /**
@@ -29,4 +41,43 @@ export function clamp(value: number, min: number, max: number): number {
  */
 export function getRelativePercentage(value: number, min: number, max: number): number {
     return clamp(((value - min) / (max - min)), 0, 1);
+}
+
+// Gets all the inputted data from a form
+export function parseForm(target: HTMLFormElement): object {
+	const formData = new FormData(target);
+	const formJson = removeEmpty(Object.fromEntries(formData));
+	return formJson
+}
+
+/**
+ * Converts a object into a string
+ * @param data Object
+ * @returns 
+ */
+export function serializeData(data: any): string {
+	let result = '?type=form';
+	for (const key in data) {
+		const value = data[key];
+		result += `&${key}=${value}`
+	}
+	return result
+}
+
+export function deserializeData(data: string): any {
+
+	// Make sure data isn't nothing
+	if (data === undefined) return;
+
+	const out = {} as any
+
+	data = data.replace("?", "") // Remove first ?
+	const parts = data.split("&")
+
+	parts.forEach(subpart => {
+		const [key, value] = subpart.split("=")
+		out[key] = value
+	})
+
+	return out
 }

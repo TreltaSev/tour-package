@@ -1,11 +1,10 @@
 <script lang="ts">
 	// --- Components ---
-	import { Flex } from '@ui';
+	import { Flex, Span } from '@ui';
 
 	// --- Logic ---
 	import { cn } from '@lib/utils';
 	import type { CheckboxProps } from '..';
-	import Span from '../../span/components/span.svelte';
 
 	let {
 		class: className,

@@ -7,7 +7,8 @@
     let {
         children,
         class: className,
-        formClass = $bindable('flex flex-col')
+        formClass = $bindable('flex flex-col'),
+        onsubmit = $bindable(undefined)
     }: Props & any = $props();
 
 
@@ -17,9 +18,19 @@
         formCls = cn(formClass, className)
     })
 
+    /**
+     * Determines whether or not custom functionality has been implemented for the form.
+     * @param event
+     */
+    function handleSubmit(event: SubmitEvent) {
+        if (onsubmit) {
+            event.preventDefault()
+            onsubmit(event);
+        }
+    }    
 </script>
 
-<form class={ formCls }>
+<form class={ formCls } onsubmit={handleSubmit}>
     {@render children?.()}
 </form>
 
