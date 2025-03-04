@@ -28,34 +28,36 @@
 	});
 </script>
 
-<Flex.Row class="size-full">
-	<!-- Drawer -->
-	<Drawer.Root active={true}>
-		<Drawer.Menu>
-			<Drawer.Item href="/">
-				<IconHome class="size-6 shrink-0" />
-				{#snippet slot_text()}
-					<Span>Home</Span>
-				{/snippet}
-			</Drawer.Item>
+<main>
+	<Flex.Row class="size-full">
+		<!-- Drawer -->
+		<Drawer.Root active={true}>
+			<Drawer.Menu>
+				<Drawer.Item href="/">
+					<IconHome class="size-6 shrink-0" />
+					{#snippet slot_text()}
+						<Span>Home</Span>
+					{/snippet}
+				</Drawer.Item>
 
-			<Drawer.Item href="/form">
-				<IconForm class="size-6 shrink-0" />
-				{#snippet slot_text()}
-					<Span>Form</Span>
-				{/snippet}
-			</Drawer.Item>
-		</Drawer.Menu>
-	</Drawer.Root>
+				<Drawer.Item href="/form">
+					<IconForm class="size-6 shrink-0" />
+					{#snippet slot_text()}
+						<Span>Form</Span>
+					{/snippet}
+				</Drawer.Item>
+			</Drawer.Menu>
+		</Drawer.Root>
 
-	<Flex.Col class={pageCls}>
-		<!-- Navigation Bar -->
+		<Flex.Col class={pageCls}>
+			<!-- Navigation Bar -->
 
-		{@render topComponent?.()}
+			{@render topComponent?.()}
 
-		{@render children?.()}
+			{@render children?.()}
 
-		<!-- Speed Dial -->
-		<SpeedDial />
-	</Flex.Col>
-</Flex.Row>
+			<!-- Speed Dial -->
+			<SpeedDial />
+		</Flex.Col>
+	</Flex.Row>
+</main>
