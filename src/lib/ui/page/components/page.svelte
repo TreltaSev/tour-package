@@ -4,7 +4,7 @@
 	import IconForm from '~icons/mdi/form';
 	import IconPackage from '~icons/mdi/transit-detour';
 	import IconCaret from '~icons/solar/alt-arrow-left-bold';
-	
+
 	import IconBeach from '~icons/majesticons/beach';
 	import IconVolcano from '~icons/material-symbols/volcano-rounded';
 	import IconCity from '~icons/solar/city-bold';
@@ -45,7 +45,7 @@
 				<Drawer.Item href="/">
 					<IconHome class="size-6 shrink-0" />
 					{#snippet slot_text()}
-						<Span>Home</Span>
+						<Span class="text-inherit">Home</Span>
 					{/snippet}
 				</Drawer.Item>
 
@@ -54,7 +54,7 @@
 						<Drawer.Item root>
 							<IconPackage class="size-6 shrink-0" />
 							{#snippet slot_text()}
-								<Span>Packages</Span>
+								<Span class="text-inherit">Packages</Span>
 							{/snippet}
 							{#snippet slot_right()}
 								<Separator />
@@ -71,21 +71,21 @@
 					<Drawer.Item href="/packages/beach">
 						<IconBeach class="size-6 shrink-0" />
 						{#snippet slot_text()}
-							<Span>Beach</Span>
+							<Span class="text-inherit">Beach</Span>
 						{/snippet}
 					</Drawer.Item>
 
 					<Drawer.Item href="/packages/city">
 						<IconCity class="size-6 shrink-0" />
 						{#snippet slot_text()}
-							<Span>City</Span>
+							<Span class="text-inherit">City</Span>
 						{/snippet}
 					</Drawer.Item>
 
 					<Drawer.Item href="/packages/volcano">
 						<IconVolcano class="size-6 shrink-0" />
 						{#snippet slot_text()}
-							<Span>Volcano</Span>
+							<Span class="text-inherit">Volcano</Span>
 						{/snippet}
 					</Drawer.Item>
 				</Drawer.Dropdown>
@@ -93,7 +93,7 @@
 				<Drawer.Item href="/form">
 					<IconForm class="size-6 shrink-0" />
 					{#snippet slot_text()}
-						<Span>Form</Span>
+						<Span class="text-inherit">Form</Span>
 					{/snippet}
 				</Drawer.Item>
 			</Drawer.Menu>
