@@ -8,7 +8,6 @@
 	import Image_MauiBeaches2 from '@assets/backdrop/maui-beaches-2.jpg';
 	import Image_MauiNapili1 from '@assets/backdrop/maui-napili-1.jpg';
 	import { clamp } from '@root/lib/internal';
-	import { fade, fly } from 'svelte/transition';
 
 	import IconLogo from "~icons/local/logo"
 
@@ -21,7 +20,7 @@
 
 <FScrollable.Root class="bg-black">
 	<!-- First View -->
-	<FScrollable.View classContainer="items-center pt-20" id="first one">
+	<FScrollable.View classContainer="items-center pt-20">
 		{#snippet backdrop()}
 			<FScrollable.Backdrop>
 				<FScrollable.Affected
