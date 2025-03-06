@@ -14,10 +14,12 @@
         "@eslint/compat": "^1.2.5",
         "@eslint/js": "^9.18.0",
         "@iconify-json/ic": "^1.2.2",
+        "@iconify-json/majesticons": "^1.2.2",
         "@iconify-json/material-symbols": "^1.2.14",
         "@iconify-json/mdi": "^1.2.3",
         "@iconify-json/mingcute": "^1.2.3",
         "@iconify-json/pajamas": "^1.2.5",
+        "@iconify-json/solar": "^1.2.2",
         "@iconify-json/tabler": "^1.2.16",
         "@iconify-json/weui": "^1.2.2",
         "@sveltejs/adapter-static": "^3.0.8",
@@ -130,6 +132,8 @@
 
     "@iconify-json/ic": ["@iconify-json/ic@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-QmjwS3lYiOmVWgTCEOTFyGODaR/+689+ajep/VsrCcsUN0Gdle5PmIcibDsdmRyrOsW/E77G41UUijdbjQUofw=="],
 
+    "@iconify-json/majesticons": ["@iconify-json/majesticons@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-hFZb/XYr2b/jW5DPpr7He0wm8iyORkryjxIiBFB8iyecpEXA1vp6ALyxN5LlKKhQ9yqhICeQ7uYWEMbwkXkRCg=="],
+
     "@iconify-json/material-symbols": ["@iconify-json/material-symbols@1.2.14", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-S0AAFFQPVr8Dkrprspz/otNjxdD3rJRXDGZjbO8a8zn8ZR5mO8jAF81lVoTfUWxPH6SCtH2lK1JQGXHGPxld7g=="],
 
     "@iconify-json/mdi": ["@iconify-json/mdi@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-O3cLwbDOK7NNDf2ihaQOH5F9JglnulNDFV7WprU2dSoZu3h3cWH//h74uQAB87brHmvFVxIOkuBX2sZSzYhScg=="],
@@ -137,6 +141,8 @@
     "@iconify-json/mingcute": ["@iconify-json/mingcute@1.2.3", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-yiEQfLBF5iwyOdxuY0kEU06+8Mp6Mrp14KVXTb+5jjSVuD71C9EQrzM/mm1Efd8Nu2amJalTPisl3loC8pHBqQ=="],
 
     "@iconify-json/pajamas": ["@iconify-json/pajamas@1.2.5", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-+zkWnKNFuHzu/YtMQqcL7QeRgKKsx0SkpS2XTlWb6UDN+qYTBpuHxAmThnKt9pRpnyX/LeXC8OhBklrSG2L5BQ=="],
+
+    "@iconify-json/solar": ["@iconify-json/solar@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-lcTb6DWL4HZObiY1W3fHfuxxuQHUc6CFHFeywKEx7Ry0k+dU6POZCMC7oVLr0F8vuf+KgaQ3oOoGO/yFzOwrNg=="],
 
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.16", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-gjvKz38+aOxfZtRvycYrASYipCsHRbCZ/Df49T0tfPntT0ur+qsgJ7PxCM4JF/Xs6+n3JkaFdiUz/N4ZZxDKdQ=="],
 

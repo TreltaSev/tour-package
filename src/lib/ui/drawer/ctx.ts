@@ -70,12 +70,28 @@ export function getCtx() {
 
 export function createDrawerDropdownData(properties: tDrawerDropdownProps) {
 	const item_count$: Writable<number> = writable(0);
-	const disabled$: Writable<boolean> = writable(properties.disabled)
+	const disabled$: Writable<boolean> = writable(properties.disabled);
+	const dropdown_show$: Writable<boolean> = writable(false);
+
+	const { show$ } = getCtx();
+	dropdown_show$.subscribe((current_show) => {
+		if (current_show) {
+			show$.set(current_show);
+		}
+	});
+
+	// Make sure if drawer closes, the menu closes too
+	show$.subscribe((root_show) => {
+		if (!root_show) {
+			dropdown_show$.set(false);
+		}
+	});
 
 	return {
 		...properties,
 		item_count$,
-		disabled$
+		disabled$,
+		dropdown_show$
 	};
 }
 
@@ -101,7 +117,7 @@ export function setDrawerDropdownCtx(properties: tDrawerDropdownProps = {}) {
 	};
 }
 
-type GetDrawerDropdownReturn = ReturnType<typeof setCtx>;
+export type GetDrawerDropdownReturn = ReturnType<typeof setDrawerDropdownCtx>;
 export function getDrawerDropdownCtx() {
 	const { NAME } = getDrawerDropdown();
 	return getContext<GetDrawerDropdownReturn>(NAME);

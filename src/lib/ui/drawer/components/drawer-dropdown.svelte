@@ -3,6 +3,9 @@
 	import { cn } from '@lib/utils';
 	import type { DropdownProps } from '..';
 	import { setDrawerDropdownCtx } from '../ctx';
+	import { Flex } from '@ui';
+	import { fade } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	let {
 		children,
@@ -10,7 +13,10 @@
 		dropdownClass = $bindable(''),
 
 		// Extra Props Here
-		disabled = false
+		disabled = false,
+
+		// Snippets
+		slot_root
 	}: DropdownProps = $props();
 
 	// Setup Dropdown's class
@@ -19,19 +25,35 @@
 		dropdownCls = cn(dropdownClass, className);
 	});
 
-	const { disabled$ } = setDrawerDropdownCtx({ disabled });
+	const { disabled$, dropdown_show$ } = setDrawerDropdownCtx({ disabled });
 
 	function onclick(event: MouseEvent) {
 		if ($disabled$) return;
 		// Do default activities
-        console.debug(`[onclick:drawer-dropdown] ${event}`)
+		console.debug(`[onclick:drawer-dropdown] ${event}`);
+	}
+
+	function expand(node: HTMLElement, params: any, { duration = 300 }) {
+		const height = node.scrollHeight;
+
+		return {
+			duration,
+			easing: params.easing || cubicOut,
+			css: (t: number) => `height: ${t * height}px; opacity: ${t}; margin-top: ${t * 8}px;`,
+		};
 	}
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
 <!-- svelte-ignore a11y_click_events_have_key_events -->
 <div class={cn(dropdownCls, $disabled$ && 'cursor-none opacity-50')} {onclick}>
-	{@render children?.()}
+	{@render slot_root?.($dropdown_show$)}
+
+	{#if $dropdown_show$}
+		<div class="flex flex-col relative ease-out gap-2 box-border mt-2" transition:expand >
+			{@render children?.()}
+		</div>
+	{/if}
 </div>
 
 <!--@component

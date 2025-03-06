@@ -3,10 +3,10 @@
 	import { Flex } from '@ui';
 
 	// --- Logic ---
-	import { base } from "$app/paths"
+	import { base } from '$app/paths';
 	import { cn } from '@lib/utils';
 	import type { ItemProps } from '..';
-	import { getCtx } from '../ctx';
+	import { getCtx, getDrawerDropdownCtx } from '../ctx';
 	import { fade } from 'svelte/transition';
 
 	let {
@@ -15,6 +15,7 @@
 
 		// Component Props
 		href = undefined,
+		root = undefined,
 
 		// Classes
 		class: className,
@@ -24,6 +25,7 @@
 
 		// Component Slots
 		slot_text,
+		slot_right,
 
 		...rest
 	}: ItemProps = $props();
@@ -34,20 +36,39 @@
 		itemCls = cn(itemClass, className);
 	});
 
-	href = base + href
+	href = base + href;
 
 	// Get Drawer Context
 	const { show$ } = getCtx();
+	const dropdownCtx = getDrawerDropdownCtx();
+
+	function onclick(event: MouseEvent) {
+		if (!dropdownCtx) return;
+		const dropdown_show$ = dropdownCtx['dropdown_show$']; // Scuffed
+		dropdown_show$.update((current_show) => {
+			return !current_show; // Flip Value
+		});
+	}
 </script>
 
-<svelte:element this={href ? 'a' : 'div'} {href}>
-	<Flex.Row class={cn(itemCls, $show$ && 'px-6 w-full')} {...rest}>
+<!-- svelte-ignore a11y_no_static_element_interactions -->
+<svelte:element this={href !== 'undefined' ? 'a' : 'div'} {href} {onclick}>
+	<Flex.Row
+		class={cn(
+			itemCls,
+			$show$ && 'px-6 w-full',
+			dropdownCtx && !(root == true) && 'w-[80%] ml-auto'
+		)}
+		{...rest}
+	>
 		{@render children?.()}
 		{#if $show$}
 			<div transition:fade>
 				{@render slot_text?.()}
 			</div>
 		{/if}
+
+		{@render slot_right?.(dropdownCtx)}
 	</Flex.Row>
 </svelte:element>
 <!--@component
