@@ -9,7 +9,8 @@
 	import Image_MauiNapili1 from '@assets/backdrop/maui-napili-1.jpg';
 	import { clamp } from '@root/lib/internal';
 
-	import IconLogo from "~icons/local/logo"
+	import IconLogo from '~icons/local/logo';
+	import { Affected } from '@root/lib/ui/fscrollable';
 
 	// This is where functional logic is, for main pages this might not be used
 </script>
@@ -35,20 +36,37 @@
 				/>
 			</FScrollable.Backdrop>
 		{/snippet}
-		
+
 		<FScrollable.Affected
-			class="animate size-full absolute items-center pt-40 flex flex-col"
-			in_start={0.3}
-			in_end={0.4}
-			out_start={0.4}
-			out_end={0.5}
-			in_transition={(p: number) => `top: ${(1-p)*120}px`}
-			out_transition={(p: number) => `top: ${(1-p)*120}px;opacity: ${p};`}
+			class="animate ease-out size-full absolute items-center pt-40 flex flex-col opacity-100"
+			in_start={0}
+			in_end={0.1}
+			out_start={0.2}
+			out_end={0.3}
+			in_transition={(p: number) => `top: ${10 * (1 - p)}%; opacity: 1`}
+			out_transition={(p: number) => `top: -10%;`}
 		>
-		<h1 class="text-white text-3xl whitespace-nowrap underline font-bold">Maui Travels</h1>
-		<span class="w-120 text-center text-lg text-white">Maui is the second-largest island in Hawaii and is known for its stunning landscapes, diverse ecosystems, and rich cultural heritage.</span>
+			<FScrollable.Affected
+				class="animate"
+				out_start={0.5}
+				out_end={1}
+				in_transition={(p: number) => `opacity: 1`}
+				out_transition={(p: number) => `opacity: ${p}`}
+			>
+				<h1 class="text-white text-3xl whitespace-nowrap underline font-bold">Maui Travels</h1>
+			</FScrollable.Affected>
+			<FScrollable.Affected
+				out_start={0.2}
+				out_end={0.3}
+				in_transition={(p: number) => `opacity: 1`}
+				out_transition={(p: number) => `opacity: ${p}`}
+				class="opacity-100 w-120 text-center"
+			>
+				<span class="text-lg text-white">
+					Maui is the second-largest island in Hawaii and is known for its stunning landscapes,
+					diverse ecosystems, and rich cultural heritage.
+				</span>
+			</FScrollable.Affected>
 		</FScrollable.Affected>
-
 	</FScrollable.View>
-
 </FScrollable.Root>

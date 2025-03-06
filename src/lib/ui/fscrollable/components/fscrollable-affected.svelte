@@ -50,10 +50,10 @@
 	onMount(() => {
 		requestAnimationFrame(() => {
 			setTimeout(() => {
-				animate_block = false
-			}, 1)
-		})
-	})
+				animate_block = false;
+			}, 1);
+		});
+	});
 
 	$effect(() => {
 		const in_transition_progress = getRelativePercentage($transition_progress$, in_start, in_end);
