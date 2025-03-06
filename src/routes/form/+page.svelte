@@ -41,6 +41,7 @@
 				label="Party Size: "
 				value="1"
 				min="1"
+				max="100"
 				step="1"
 				pattern="^[0-9]"
 				required
@@ -51,8 +52,8 @@
 			<select id="Tour-Package" name="Tour-Package" style="color: white;">
 				<!--Fill out the options once we decide what we need to add-->
 				<option value="Beach" style="color: black;">Beach Package</option>
-				<option value="Volcano" style="color: black;">Volcano Package</option>
 				<option value="City" style="color: black;">City Package</option>
+				<option value="Volcano" style="color: black;">Volcano Package</option>
 			</select>
 
 
