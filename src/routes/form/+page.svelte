@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { parseForm, serializeData } from '@root/lib/internal';
 	import { Flex, Form } from '@ui';
+	import { base } from '$app/paths';
 
 	function onsubmit(event: SubmitEvent) {
 		if (!event.target) return;
@@ -8,7 +9,7 @@
 		const formString = serializeData(formData);
 
 		// Route to Payments
-		window.location.href = `/form/payment/${formString}`;
+		window.location.href = `${base}/form/payment/${formString}`;
 	}
 </script>
 
@@ -55,7 +56,6 @@
 				<option value="City" style="color: black;">City Package</option>
 				<option value="Volcano" style="color: black;">Volcano Package</option>
 			</select>
-
 
 			<Form.Checkbox label="Include Air Travel" name="air-travel" />
 
