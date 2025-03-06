@@ -1,4 +1,5 @@
 import type { ClassValue, HTMLAttributes } from 'svelte/elements';
+import type { Writable } from 'svelte/store';
 
 export type tDrawerProps = HTMLAttributes<HTMLDivElement> & {
 	// Extra Props Here:
@@ -37,4 +38,19 @@ export type tDrawerItemProps = HTMLAttributes<HTMLDivElement> & {
 
 export type tDrawerHamburgerProps = HTMLAttributes<HTMLDivElement> & {
     // Extra Props Here:
+};
+
+export type tDrawerDropdownData = {
+	id?: string,
+	item_count?: Writable<number>;
+}
+
+export type tDrawerDropdownProps = HTMLAttributes<HTMLDivElement> & {
+    // Classes:
+
+    // --- Default Classes:
+    dropdownClass?: ClassValue,
+    
+    // Extra Props Here:
+	disabled?: boolean
 };
