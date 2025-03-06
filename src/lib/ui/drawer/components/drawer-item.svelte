@@ -52,7 +52,7 @@
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions -->
-<svelte:element this={href !== 'undefined' ? 'a' : 'div'} {href} {onclick}>
+<svelte:element this={href !== 'undefined' ? 'a' : 'div'} href={(href === "undefined") ? undefined : href} {onclick}>
 	<Flex.Row
 		class={cn(
 			itemCls,
