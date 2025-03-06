@@ -17,7 +17,8 @@
             w-80
             bg-white
             dark:bg-black
-            relative
+            gap-4
+            
         `),
 
         // Slots Here:
