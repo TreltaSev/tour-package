@@ -41,6 +41,7 @@
 				label="Party Size: "
 				value="1"
 				min="1"
+				max="100"
 				step="1"
 				pattern="^[0-9]"
 				required
