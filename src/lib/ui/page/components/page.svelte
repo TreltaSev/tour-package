@@ -3,11 +3,16 @@
 	import IconHome from '~icons/material-symbols/home-rounded';
 	import IconForm from '~icons/mdi/form';
 	import IconPackage from '~icons/mdi/transit-detour';
+	import IconCaret from '~icons/solar/alt-arrow-left-bold';
+	
+	import IconBeach from '~icons/majesticons/beach';
+	import IconVolcano from '~icons/material-symbols/volcano-rounded';
+	import IconCity from '~icons/solar/city-bold';
 
 	import { cn } from '@lib/utils';
 	import type { Props } from '..';
 
-	import { Drawer, Flex, Page } from '@ui';
+	import { Drawer, Flex, Page, Separator } from '@ui';
 	import { SpeedDial } from '@components';
 	import Span from '../../span/components/span.svelte';
 	import { setPageCtx } from '../ctx';
@@ -44,12 +49,46 @@
 					{/snippet}
 				</Drawer.Item>
 
-				<Drawer.Item href="/packages">
-					<IconPackage class="size-6 shrink-0"/>
-					{#snippet slot_text()}
-						<span>Packages</span>
+				<Drawer.Dropdown>
+					{#snippet slot_root($dropdown_show$)}
+						<Drawer.Item root>
+							<IconPackage class="size-6 shrink-0" />
+							{#snippet slot_text()}
+								<Span>Packages</Span>
+							{/snippet}
+							{#snippet slot_right()}
+								<Separator />
+								<IconCaret
+									class={cn(
+										'shrink-0 rotate-180 animate ease-out',
+										$dropdown_show$ && 'rotate-270'
+									)}
+								/>
+							{/snippet}
+						</Drawer.Item>
 					{/snippet}
-				</Drawer.Item>
+
+					<Drawer.Item href="/packages/beach">
+						<IconBeach class="size-6 shrink-0" />
+						{#snippet slot_text()}
+							<Span>Beach</Span>
+						{/snippet}
+					</Drawer.Item>
+
+					<Drawer.Item href="/packages/city">
+						<IconCity class="size-6 shrink-0" />
+						{#snippet slot_text()}
+							<Span>City</Span>
+						{/snippet}
+					</Drawer.Item>
+
+					<Drawer.Item href="/packages/volcano">
+						<IconVolcano class="size-6 shrink-0" />
+						{#snippet slot_text()}
+							<Span>Volcano</Span>
+						{/snippet}
+					</Drawer.Item>
+				</Drawer.Dropdown>
 
 				<Drawer.Item href="/form">
 					<IconForm class="size-6 shrink-0" />
