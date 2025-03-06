@@ -45,7 +45,7 @@
 			in_transition={(p: number) => `top: ${(1-p)*120}px`}
 			out_transition={(p: number) => `top: ${(1-p)*120}px;opacity: ${p};`}
 		>
-		<h1 class="text-white text-3xl whitespace-nowrap">Maui Travels</h1>
+		<h1 class="text-white text-3xl whitespace-nowrap underline font-bold">Maui Travels</h1>
 		<span class="w-120 text-center text-lg text-white">Maui is the second-largest island in Hawaii and is known for its stunning landscapes, diverse ecosystems, and rich cultural heritage.</span>
 		</FScrollable.Affected>
 
