@@ -57,11 +57,10 @@
 				<option value="Volcano" style="color: black;">Volcano Package</option>
 			</select>
 
-			<Form.Checkbox label="Include Air Travel" name="air-travel" />
-
-			<Form.Checkbox label="Meals" name="meals" />
-			<Form.Checkbox label="Evening Wine" name="wine" />
-			<Form.Checkbox label="Car Rental" name="car" />
+			<Form.Checkbox classContainer="w-full justify-between" label="Include Air Travel" name="air-travel" />
+			<Form.Checkbox classContainer="w-full justify-between" label="Meals" name="meals" />
+			<Form.Checkbox classContainer="w-full justify-between" label="Evening Wine" name="wine" />
+			<Form.Checkbox classContainer="w-full justify-between" label="Car Rental" name="car" />
 
 			<button
 				type="submit"
