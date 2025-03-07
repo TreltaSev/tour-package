@@ -10,17 +10,65 @@
 @font-face {
 	font-family: Lato;
 	font-style: normal;
-	font-weight: 200 700;
+	font-weight: bolder;
 	font-display: swap;
-	src: url('fonts/Lato.ttf') format('truetype');
+	src: url('fonts/lato/Lato-Black.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: italic;
+	font-weight: bolder;
+	font-display: swap;
+	src: url('fonts/lato/Lato-BlackItalic.ttf') format('truetype');
 }
 
 @font-face {
 	font-family: Lato;
 	font-style: normal;
-	font-weight: 700;
+	font-weight: bold;
 	font-display: swap;
-	src: url('fonts/Lato.ttf') format('truetype');
+	src: url('fonts/lato/Lato-Bold.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: italic;
+	font-weight: bold;
+	font-display: swap;
+	src: url('fonts/lato/Lato-BoldItalic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: italic;
+	font-weight: normal;
+	font-display: swap;
+	src: url('fonts/lato/Lato-Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: lighter;
+	font-display: swap;
+	src: url('fonts/lato/Lato-Light.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: italic;
+	font-weight: lighter;
+	font-display: swap;
+	src: url('fonts/lato/Lato-Italic.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-display: swap;
+	src: url('fonts/lato/Lato-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -90,7 +138,7 @@
 	*/
 
 	.ease-bounce {
-		transition-timing-function: cubic-bezier(1,.5,.24,.62);
+		transition-timing-function: cubic-bezier(1, 0.5, 0.24, 0.62);
 	}
 
 	.ease-out {
