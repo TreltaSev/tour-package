@@ -1,6 +1,7 @@
 <script lang="ts">
 	// --- Components ---
-	import { Flex, Separator, Drawer } from '@ui';	
+	import { Flex, Separator, Drawer } from '@ui';
+	import IconLogo from '~icons/local/logo';
 
 	// --- Logic ---
 	import { cn } from '@lib/utils';
@@ -8,6 +9,7 @@
 	import { getCtx } from '../ctx';
 	import { fade } from 'svelte/transition';
 	import { directives } from '@root/lib/internal/directives';
+	import { Row } from '../../flex';
 
 	let {
 		children,
@@ -31,16 +33,29 @@
 	$effect(() => {
 		menuCls = cn(menuClass, className);
 	});
-	
+
 	// Get Drawer Context
 	const { show$, close_drawer } = getCtx();
 </script>
 
 <!-- Actual Menu -->
-<div use:directives class={cn(menuClass, !$show$ && 'w-[60px]' || "pt-6")} onoutclick={() => close_drawer()}>
-
+<div
+	use:directives
+	class={cn(menuClass, (!$show$ && 'w-[60px]') || 'pt-6')}
+	onoutclick={() => close_drawer()}
+>
 	<!-- Hamborgor Button -->
-	<Drawer.Hamburger/>
+	<Flex.Row class="w-full h-fit relative z-0">
+		{#if $show$}
+			<div
+				transition:fade={{ duration: 200 }}
+				class="absolute left-8 size-10 flex flex-col items-center justify-center overflow-hidden"
+			>
+				<IconLogo class="size-14 shrink-0 opacity-99" />
+			</div>
+		{/if}
+		<Drawer.Hamburger class="z-1" />
+	</Flex.Row>
 
 	<!-- Children-->
 	<Flex.Col class={cn('animate shrink-0 w-15 box-border pl-[10px] gap-3', $show$ && 'px-8 w-full')}>
