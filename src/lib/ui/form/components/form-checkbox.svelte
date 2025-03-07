@@ -5,6 +5,7 @@
 	// --- Logic ---
 	import { cn } from '@lib/utils';
 	import type { CheckboxProps } from '..';
+	import { Checkbox } from '@root/lib/components';
 
 	let {
 		class: className,
@@ -37,15 +38,6 @@
 		checkboxCls = cn(checkboxClass, className);
 	});
 
-	// Flip the value of this component
-	function flip_value() {
-		value = !value;
-        if (value) {
-            inputValue = "yes"
-        } else {
-            inputValue = "no"
-        }
-	}
 </script>
 
 <input value={inputValue} class={inputCls} {...rest} />
@@ -55,10 +47,7 @@
 	{#if label}
 		<Span>{label}</Span>
 	{/if}
-	<Flex.Row
-		class={cn(checkboxCls, 'bg-red-300 ', value && 'bg-green-200')}
-		onclick={() => flip_value()}
-	/>
+	<Checkbox {...rest}></Checkbox>
 </Flex.Row>
 
 <!--@component

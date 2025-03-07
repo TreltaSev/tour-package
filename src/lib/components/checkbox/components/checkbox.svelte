@@ -16,6 +16,7 @@
             cursor-pointer
             justify-center
             pl-[6%]
+			box-border
         `),
 		containerClass = $bindable(`
             justify-start items-start size-fit
@@ -23,9 +24,6 @@
 		classContainer = $bindable(``),
 		value = $bindable(false),
 		inputValue = $bindable(''),
-
-		// Slots
-		slot_label,
 
 		...rest // Rest
 	}: Props = $props();
@@ -45,7 +43,6 @@
 <input value={inputValue} class="hidden" {...rest}/>
 
 <Flex.Row class={cn(containerClass, classContainer)}>
-	{@render slot_label?.()}
 	<Flex.Col class={cn(checkboxCls, `bg-red pl-[7%]`, value && 'bg-green pl-[65%]')} {onclick}>
 		<Flex.Root class={cn('size-4 rounded-sm bg-white ', value && '')} />
 	</Flex.Col>
