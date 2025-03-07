@@ -8,6 +8,7 @@
 	import { Checkbox } from '@root/lib/components';
 
 	let {
+		children,
 		class: className,
 
 		label,
@@ -47,7 +48,8 @@
 	{#if label}
 		<Span>{label}</Span>
 	{/if}
-	<Checkbox {...rest}></Checkbox>
+	<Checkbox bind:value {...rest}></Checkbox>
+	{@render children?.()}
 </Flex.Row>
 
 <!--@component

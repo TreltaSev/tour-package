@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { clsx, type ClassValue } from 'clsx';
+import { cubicOut } from 'svelte/easing';
 import { twMerge } from 'tailwind-merge';
 
 /**
@@ -15,15 +17,15 @@ export function cn(...inputs: (ClassValue | unknown)[]) {
  * Allows for easy creation of data attribute specific classes in tailwind.
  * First, you create the builder while specifying the root selector. then you can call
  * `cn_a.build('bg-black')`.
- * 
+ *
  * ## Usage
  * ```ts
  * const builder = new cn_a("state=toggled")
  * builder.build("bg-black text-white") // >> "data-[state=toggled]:bg-black data-[state=toggled]:text-white"
- * 
+ *
  * // Or
  * cn_a.buildx("state=toggled", "bg-black text-white") // >> "data-[state=toggled]:bg-black data-[state=toggled]:text-white"
- * 
+ *
  * ```
  */
 export class cn_a {
@@ -86,4 +88,20 @@ export class cn_a {
 
 		return buffer.join(' '); // Return all the changes split
 	}
+}
+
+export function expand(node: HTMLElement, params: any, { duration = 300 }) {
+	const height = node.scrollHeight;
+
+	return {
+		duration,
+		easing: params.easing || cubicOut,
+		css: (t: number) => `height: ${t * height}px; opacity: ${t}; margin-top: ${t * 8}px;`
+	};
+}
+
+export function uuidv4() {
+	return '10000000-1000-4000-8000-100000000000'.replace(/[018]/g, (c) =>
+		(+c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (+c / 4)))).toString(16)
+	);
 }
