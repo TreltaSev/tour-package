@@ -8,6 +8,7 @@
 	function onsubmit(event: SubmitEvent) {
 		if (!event.target) return;
 		const formData = parseForm(event.target as HTMLFormElement);
+		
 		const formString = serializeData(formData);
 
 		// Route to Payments
@@ -16,6 +17,7 @@
 
 	// Binded Values
 	let includeAirTravel: boolean = false;
+	let chosenPackage: string | undefined = undefined;
 </script>
 
 <svelte:head>
@@ -57,12 +59,39 @@
 
 		<!--Tour Package without option to select multiple-->
 		<label for="Tour-Package" style="color:white;">Select Tour Package:</label>
-		<select id="Tour-Package" name="Tour-Package" style="color: white;">
+		<select id="Tour-Package" name="Tour-Package" style="color: white;" bind:value={chosenPackage}>
 			<!--Fill out the options once we decide what we need to add-->
 			<option value="Beach" style="color: black;">Beach Package</option>
 			<option value="City" style="color: black;">City Package</option>
 			<option value="Volcano" style="color: black;">Volcano Package</option>
 		</select>
+
+		{#if chosenPackage == 'Beach'}
+			<fieldset>
+				<Form.Input
+					containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+					labelClass="text-white/80"
+					class="size-4 border-0"
+					type="checkbox"
+					name="location"
+					value="kaanapali-beach"
+					label="Kaanapali Beach"
+				/>
+				<Form.Input
+					containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+					labelClass="text-white/80"
+					class="size-4 border-0"
+					type="checkbox"
+					name="location"
+					value="wailea-beach"
+					label="Wailea Beach"
+				/>
+			</fieldset>
+		{:else if chosenPackage == 'City'}
+			<span>c</span>
+		{:else if chosenPackage == 'Volcano'}
+			<span>v</span>
+		{/if}
 
 		<Flex.Col class="gap-0">
 			<Form.Checkbox

@@ -46,7 +46,23 @@ export function getRelativePercentage(value: number, min: number, max: number): 
 // Gets all the inputted data from a form
 export function parseForm(target: HTMLFormElement): object {
 	const formData = new FormData(target);
+
+	const out = {}
+
+	// TODO: Fix this :)
+	// for (const [value, key] in formData) {
+
+	// }
+
+	formData.forEach((value, key) => {
+		if (key in out) {
+			console.log("Included")
+
+		}
+	})
+	console.log(Object.fromEntries(formData))
 	const formJson = removeEmpty(Object.fromEntries(formData));
+	throw new Error("Stop");
 	return formJson
 }
 
