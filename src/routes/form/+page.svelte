@@ -1,9 +1,16 @@
 <script lang="ts">
-	import { parseForm, serializeData } from '@root/lib/internal';
+	import {
+		deserializeData,
+		parseForm,
+		removeEmpty,
+		removeUndefined,
+		serializeData
+	} from '@root/lib/internal';
 	import { Flex, Form } from '@ui';
 	import { base } from '$app/paths';
 	import { fade } from 'svelte/transition';
 	import { expand } from '@root/lib/utils';
+	import { onMount } from 'svelte';
 
 	function onsubmit(event: SubmitEvent) {
 		if (!event.target) return;
@@ -14,6 +21,29 @@
 		// Route to Payments
 		window.location.href = `${base}/form/payment/${formString}`;
 	}
+
+	function sift() {
+		const search = removeUndefined(deserializeData(window.location.search));
+		if (Object.keys(search).length === 0) {
+			return;
+		} // Empty
+
+		for (const [key, value] of Object.entries(search)) {
+			console.log(key, value);
+			if (key == 'location') {
+				// Different Functionality
+				setTimeout(() => {
+					(document.querySelector(`input[value="${value}"]`) as HTMLInputElement).checked = true;
+				}, 150);
+			} else {
+				chosenPackage = value as string;
+			}
+		}
+	}
+
+	onMount(() => {
+		sift();
+	});
 
 	// Binded Values
 	let includeAirTravel: boolean = false;
@@ -60,20 +90,16 @@
 		<!-- Tour Package Selector-->
 		<Flex.Col class="gap-2">
 			<label for="Tour-Package" style="color:white;">Select Tour Package:</label>
-			<select
-				name="package"
-				style="color: white;"
-				bind:value={chosenPackage}
-			>
+			<select name="tour-package" style="color: white;" bind:value={chosenPackage}>
 				<!--Fill out the options once we decide what we need to add-->
-				<option value="Beach" style="color: black;">Beach Package</option>
-				<option value="City" style="color: black;">City Package</option>
-				<option value="Volcano" style="color: black;">Volcano Package</option>
+				<option value="beach" style="color: black;">Beach Package</option>
+				<option value="city" style="color: black;">City Package</option>
+				<option value="volcano" style="color: black;">Volcano Package</option>
 			</select>
 
 			<!-- If Beach is Chosen-->
-			{#if chosenPackage == 'Beach'}
-				<fieldset transition:expand={{offset: 0}} class="flex flex-col mt-2">
+			{#if chosenPackage == 'beach'}
+				<fieldset transition:expand={{ offset: 0 }} class="flex flex-col mt-2">
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
 						labelClass="text-white/80"
@@ -92,9 +118,27 @@
 						value="wailea-beach"
 						label="Wailea Beach"
 					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="hookipa-beach"
+						label="Hookipa Beach"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="kapalua-beach"
+						label="Kapalua Beach"
+					/>
 				</fieldset>
-			{:else if chosenPackage == 'City'}
-				<fieldset transition:expand={{offset: 0}} class="flex flex-col mt-2">
+			{:else if chosenPackage == 'city'}
+				<fieldset transition:expand={{ offset: 0 }} class="flex flex-col mt-2">
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
 						labelClass="text-white/80"
@@ -110,8 +154,8 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="lahaina-city"
-						label="Lahaina"
+						value="lahina-city"
+						label="Lahina"
 					/>
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
@@ -132,8 +176,8 @@
 						label="Wailuku"
 					/>
 				</fieldset>
-			{:else if chosenPackage == 'Volcano'}
-				<fieldset transition:expand={{offset: 0}} class="mt-2">
+			{:else if chosenPackage == 'volcano'}
+				<fieldset transition:expand={{ offset: 0 }} class="mt-2">
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
 						labelClass="text-white/80"

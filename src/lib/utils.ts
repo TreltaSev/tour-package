@@ -107,7 +107,7 @@ export function uuidv4() {
 }
 
 export function reference_package_to_form(package_name: string, location: string | undefined = undefined) {
-	let buff: string = `?package=${package_name}`;
+	let buff: string = `?tour-package=${package_name}`;
 	if (location !== undefined) {
 		buff += `&location=${location}`
 	}
