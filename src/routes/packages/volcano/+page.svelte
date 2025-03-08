@@ -12,6 +12,7 @@
 
 	// --- Logic
 	import { clamp } from '@root/lib/internal';
+	import { reference_package_to_form } from '@root/lib/utils';
 </script>
 
 <FScrollable.Root class="bg-black">
@@ -57,6 +58,12 @@
 						However, the volcano is considered dormant with no significant eruption in modern times.
 						Scientists continue to monitor it closely</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("volcano", "haleakala-volcano")}
+					>
+						<span class="text-lg text-white">Tour Haleakala</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Second Card -->
@@ -86,6 +93,12 @@
 						approximately 2 million years ago. The volcano is thought to have stopped being active
 						long before Haleakalā formed.</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("volcano", "mauna-kahalawai-volcano")}
+					>
+						<span class="text-lg text-white">Tour Mauna Kahalawai</span>
+					</Flex.Row>
 				</Card>
 			</Flex.Row>
 
