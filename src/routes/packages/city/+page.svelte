@@ -14,6 +14,7 @@
 
 	// --- Logic
 	import { clamp } from '@root/lib/internal';
+	import { reference_package_to_form } from '@root/lib/utils';
 </script>
 
 <FScrollable.Root class="bg-black">
@@ -57,6 +58,12 @@
 					<Span class="text-black/60 dark:text-black/60">
 						Key Features: Business & Industry, Shopping & Dining, Harbor, and Nearby Attraction
 					</Span>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("city", "kahului-city")}
+					>
+						<span class="text-lg text-white">Tour Kahului</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Second Card -->
@@ -84,6 +91,12 @@
 						>Key Features: Historic Sites, Front Streets, Whale Watching, Maui Ocean Center, and
 						Beaches.
 					</Span>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("city", "lahina-city")}
+					>
+						<span class="text-lg text-white">Tour Lahina</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Third Card -->
@@ -111,6 +124,12 @@
 						>Key Features: Beaches, Outdoor Activities, Shopping & Dining, and Affordable
 						Accommodation.
 					</Span>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("city", "kihei-city")}
+					>
+						<span class="text-lg text-white">Tour Kihei</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Fourth Card -->
@@ -137,6 +156,12 @@
 					<Span class="text-black/60 dark:text-black/60"
 						>Key Features: Historic Town, Iao valley, and Local Government & Services.
 					</Span>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("city", "wailuku-city")}
+					>
+						<span class="text-lg text-white">Tour Wailuku</span>
+					</Flex.Row>
 				</Card>
 			</Flex.Row>
 

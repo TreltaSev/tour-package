@@ -14,6 +14,7 @@
 
 	// --- Logic
 	import { clamp } from '@root/lib/internal';
+	import { reference_package_to_form } from '@root/lib/utils';
 </script>
 
 <FScrollable.Root class="bg-black">
@@ -59,6 +60,12 @@
 					<Span class="text-black/60 dark:text-black/60"
 						>Best For: Families, water sports, and sunset views.</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("beach", "kaanapali-beach")}
+					>
+						<span class="text-lg text-white">Tour Kaanapali</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Second Card -->
@@ -85,6 +92,12 @@
 					<Span class="text-black/60 dark:text-black/60"
 						>Best For: Snorkeling, luxury resort stays, and relaxation.</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("beach", "wailea-beach")}
+					>
+						<span class="text-lg text-white">Tour Wailea</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Third Card -->
@@ -110,6 +123,12 @@
 					<Span class="text-black/60 dark:text-black/60"
 						>Best For: Surfing enthusiasts and spectators of water sports.</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("beach", "hookipa-beach")}
+					>
+						<span class="text-lg text-white">Tour Hookipa</span>
+					</Flex.Row>
 				</Card>
 
 				<!-- Fourth Card -->
@@ -136,6 +155,12 @@
 					<Span class="text-black/60 dark:text-black/60"
 						>Best For: Snorkelers, families, and swimmers looking for a quieter, protected area.</Span
 					>
+					<Flex.Row
+						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
+						onclick={() => reference_package_to_form("beach", "kapalua-beach")}
+					>
+						<span class="text-lg text-white">Tour Kapalua</span>
+					</Flex.Row>
 				</Card>
 			</Flex.Row>
 

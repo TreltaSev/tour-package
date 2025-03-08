@@ -105,3 +105,12 @@ export function uuidv4() {
 		(+c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (+c / 4)))).toString(16)
 	);
 }
+
+export function reference_package_to_form(package_name: string, location: string | undefined = undefined) {
+	let buff: string = `?tour-package=${package_name}`;
+	if (location !== undefined) {
+		buff += `&location=${location}`
+	}
+	window.location.href=`/form${buff}`
+	return buff
+}
