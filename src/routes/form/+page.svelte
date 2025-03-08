@@ -11,6 +11,8 @@
 	import { fade } from 'svelte/transition';
 	import { expand } from '@root/lib/utils';
 	import { onMount } from 'svelte';
+	import { PriceHandler } from '@root/lib/components';
+	import prices from '@root/lib/internal/prices';
 
 	function onsubmit(event: SubmitEvent) {
 		if (!event.target) return;
@@ -101,14 +103,16 @@
 			{#if chosenPackage == 'beach'}
 				<fieldset transition:expand={{ offset: 0 }} class="flex flex-col mt-2">
 					<Form.Input
-						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5 "
 						labelClass="text-white/80"
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
 						value="kaanapali-beach"
 						label="Kaanapali Beach"
-					/>
+					>
+						<PriceHandler price={prices.package.beach.locations.kaanapali} />
+					</Form.Input>
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
 						labelClass="text-white/80"
