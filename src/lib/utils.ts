@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { base } from '$app/paths';
 import { clsx, type ClassValue } from 'clsx';
 import { cubicOut } from 'svelte/easing';
 import { twMerge } from 'tailwind-merge';
@@ -111,6 +112,6 @@ export function reference_package_to_form(package_name: string, location: string
 	if (location !== undefined) {
 		buff += `&location=${location}`
 	}
-	window.location.href=`/form${buff}`
+	window.location.href=`${base}/form${buff}`
 	return buff
 }
