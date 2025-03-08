@@ -7,17 +7,22 @@
 	import type { InputProps } from '..';
 
 	let {
+		children,
 		class: className,
 		label,
 
 		// Default Classes
 		containerClass = $bindable(''),
-		inputClass = $bindable('box-border w-full rounded-xs p-2 bg-black/10 dark:bg-white'),
-		labelClass = $bindable('text-[1rem] text-subtle'),
+		inputClass = $bindable('box-border w-full rounded-xs p-2 bg-black/10'),
+		labelClass = $bindable('text-[1rem] text-black'),
+		source_value = $bindable(undefined),
 
 		// User Defined Classes
 		classContainer,
 		classLabel,
+
+		// Slots
+		slot_inside,
 
 		...rest
 	}: InputProps = $props();
@@ -37,13 +42,16 @@
 
 <!-- Container for both the label and the input component-->
 <Flex.Col class={ containerCls }>
+
+	{@render children?.()}
+	
 	<!-- only render a label if one is specified -->
 	{#if label}
 		<Span class={ labelCls }>{label}</Span> <!-- By default, this already has a mode:reactive color change-->
 	{/if}
 
 	<!-- Render input element -->
-	<input class={ inputCls } {...rest} />
+	<input class={ inputCls } {...rest}/>
 </Flex.Col>
 
 <!--@component

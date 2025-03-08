@@ -16,7 +16,7 @@
 		inputValue,
 
 		// Default Classes
-		containerClass = $bindable('gap-5 items-center w-fit'),
+		containerClass = $bindable('gap-2 items-center w-fit'),
 		inputClass = $bindable('hidden'),
 		checkboxClass = $bindable('relative size-5 px-[5px] rounded-full cursor-pointer'),
 
@@ -38,7 +38,6 @@
 		inputCls = cn(inputClass, classInput);
 		checkboxCls = cn(checkboxClass, className);
 	});
-
 </script>
 
 <input value={inputValue} class={inputCls} {...rest} />
@@ -46,10 +45,10 @@
 
 <Flex.Row class={containerCls}>
 	{#if label}
-		<Span>{label}</Span>
+		<Span class="whitespace-nowrap">{label}</Span>
 	{/if}
-	<Checkbox bind:value {...rest}></Checkbox>
 	{@render children?.()}
+	<Checkbox bind:value {...rest}></Checkbox>
 </Flex.Row>
 
 <!--@component

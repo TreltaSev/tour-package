@@ -60,7 +60,7 @@
 					>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("volcano", "haleakala-volcano")}
+						onclick={() => reference_package_to_form("volcano", "haleakala")}
 					>
 						<span class="text-lg text-white">Tour Haleakala</span>
 					</Flex.Row>
@@ -95,7 +95,7 @@
 					>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("volcano", "mauna-kahalawai-volcano")}
+						onclick={() => reference_package_to_form("volcano", "mauna-kahalawai")}
 					>
 						<span class="text-lg text-white">Tour Mauna Kahalawai</span>
 					</Flex.Row>

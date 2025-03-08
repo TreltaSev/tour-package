@@ -5,6 +5,8 @@
 	// --- Logic ---
 	import { cn } from '@lib/utils';
 	import type { Props } from '..';
+	import { getContext } from 'svelte';
+	import { get, type Writable } from 'svelte/store';
 
 	let {
 		class: className,
@@ -28,6 +30,8 @@
 		...rest // Rest
 	}: Props = $props();
 
+	const { ref$ } = getContext('form-data') as { ref$: Writable<HTMLFormElement | undefined> };
+
 	// Setup Checkbox's class
 	let checkboxCls = $state(cn(checkboxClass, className));
 	$effect(() => {
@@ -37,10 +41,15 @@
 	function onclick() {
 		value = !value; // Toggle Value
 		inputValue = value ? 'yes' : 'no'; // Reflect input value
+
+		if (get(ref$) !== undefined && ref$) {
+			const changeEvt = new Event('change', { bubbles: true });
+			(get(ref$) as any).dispatchEvent(changeEvt);
+		}
 	}
 </script>
 
-<input value={inputValue} class="hidden" {...rest}/>
+<input value={inputValue} class="hidden" {...rest} />
 
 <Flex.Row class={cn(containerClass, classContainer)}>
 	<Flex.Col class={cn(checkboxCls, `bg-red pl-[7%]`, value && 'bg-green pl-[65%]')} {onclick}>

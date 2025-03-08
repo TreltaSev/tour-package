@@ -8,7 +8,7 @@
 	let className: $$Props['class'] = undefined;
 	export { className as class };
 
-	export let spanClass = 'text-black dark:text-white';
+	export let spanClass = 'text-black';
 
 	$: spanCls = cn(spanClass, className);
 </script>

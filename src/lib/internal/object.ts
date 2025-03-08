@@ -50,6 +50,7 @@ export function parseForm(target: HTMLFormElement): object {
 	const out = {} as any;
 
 	for (const [key, value] of formData) {
+
 		// Skip Empty Values
 		if (value === '' || value === undefined) {
 			continue;
@@ -60,6 +61,11 @@ export function parseForm(target: HTMLFormElement): object {
 			out[key] = [out[key], value];
 			continue;
 		}
+
+		if (Array.isArray(out[key])) {
+			out[key].push(value)
+			continue
+		} 
 
 		// Not a duplicate, singleton value so far
 		out[key] = value;

@@ -1,8 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import type { Snippet } from 'svelte';
 import type { ClassValue, HTMLAttributes, HTMLInputAttributes } from 'svelte/elements';
 
 export type tFormProps = HTMLAttributes<HTMLFormElement> & {
 	// Extra Props Here:
 	formClass?: ClassValue;
+
+    ref?: HTMLFormElement
 };
 export type tFormInputProps = HTMLInputAttributes & {
 	// Extra Props Here:
@@ -18,6 +22,11 @@ export type tFormInputProps = HTMLInputAttributes & {
 
     // Component Props
     label?: string;
+    source_value?: any;
+
+    // Slots
+    children?: Snippet<[any]>;
+    slot_inside?: Snippet<[any]>;
 };
 
 export type tFormCheckboxProps = HTMLInputAttributes & {

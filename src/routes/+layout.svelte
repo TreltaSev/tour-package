@@ -17,6 +17,7 @@
 
 	// Apply the class on subscription update
 	mode$.subscribe((v) => {
+		localStorage.theme = "light"
 		if (typeof document !== 'undefined') {
 			document.documentElement.classList.toggle('dark', v === 'dark');
 		}
