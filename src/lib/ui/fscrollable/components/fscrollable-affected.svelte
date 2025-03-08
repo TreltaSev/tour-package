@@ -83,7 +83,7 @@
 		draggable="false"
 	/>
 {:else}
-	<div class={affectedCls} style={`${stile};${elem_transition}`}>
+	<div class={cn(affectedCls, 'text-white')} style={`${stile};${elem_transition}`}>
 		{@render children?.()}
 	</div>
 {/if}
