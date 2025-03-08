@@ -5,6 +5,8 @@ import type { ClassValue, HTMLAttributes, HTMLInputAttributes } from 'svelte/ele
 export type tFormProps = HTMLAttributes<HTMLFormElement> & {
 	// Extra Props Here:
 	formClass?: ClassValue;
+
+    ref?: HTMLFormElement
 };
 export type tFormInputProps = HTMLInputAttributes & {
 	// Extra Props Here:

@@ -4,7 +4,7 @@
 
 	// --- Images
 	import Image_MauiNapili1 from '@assets/backdrop/maui-napili-1.jpg';
-	import Image_MauiBeaches1 from '@assets/backdrop/maui-root-beach-1.png';
+	import Image_MauiBeaches1 from '@assets/backdrop/maui-root-1.png';
 	import Image_MauiVolcanos1 from '@assets/backdrop/maui-volcano-1.jpg';
 	import Image_MauiCity1 from '@assets/backdrop/maui-city-1.png';
 	import { clamp } from '@root/lib/internal';

@@ -60,7 +60,7 @@
 					</Span>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("city", "kahului-city")}
+						onclick={() => reference_package_to_form("city", "kahului")}
 					>
 						<span class="text-lg text-white">Tour Kahului</span>
 					</Flex.Row>
@@ -93,7 +93,7 @@
 					</Span>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("city", "lahina-city")}
+						onclick={() => reference_package_to_form("city", "lahina")}
 					>
 						<span class="text-lg text-white">Tour Lahina</span>
 					</Flex.Row>
@@ -126,7 +126,7 @@
 					</Span>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("city", "kihei-city")}
+						onclick={() => reference_package_to_form("city", "kihei")}
 					>
 						<span class="text-lg text-white">Tour Kihei</span>
 					</Flex.Row>
@@ -158,7 +158,7 @@
 					</Span>
 					<Flex.Row
 						class="px-6 py-2 rounded-md cursor-pointer text-white bg-primary-500 hover:bg-primary-600"
-						onclick={() => reference_package_to_form("city", "wailuku-city")}
+						onclick={() => reference_package_to_form("city", "wailuku")}
 					>
 						<span class="text-lg text-white">Tour Wailuku</span>
 					</Flex.Row>

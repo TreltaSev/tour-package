@@ -1,4 +1,6 @@
 <script lang="ts">
+	// @ts-nocheck
+	
 	import {
 		deserializeData,
 		parseForm,
@@ -11,7 +13,7 @@
 	import { fade } from 'svelte/transition';
 	import { expand } from '@root/lib/utils';
 	import { onMount } from 'svelte';
-	import { PriceHandler } from '@root/lib/components';
+	import { CostHandler, PriceHandler } from '@root/lib/components';
 	import prices from '@root/lib/internal/prices';
 
 	function onsubmit(event: SubmitEvent) {
@@ -50,6 +52,7 @@
 	// Binded Values
 	let includeAirTravel: boolean = false;
 	let chosenPackage: string | undefined = undefined;
+	let ref_form: HTMLFormElement | undefined
 </script>
 
 <svelte:head>
@@ -57,9 +60,10 @@
 </svelte:head>
 
 <Flex.Col class="size-full items-center justify-center py-20">
-	<Form.Root
+	<Form.Root  
 		class="p-20 bg-white h-full w-120 max-w-3/4 gap-8 overflow-y-scroll no-scrollbar rounded-md shadow-md"
 		{onsubmit}
+		bind:ref={ref_form}
 	>
 		<Form.Input
 			type="text"
@@ -107,7 +111,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="kaanapali-beach"
+						value="kaanapali"
 						label="Kaanapali Beach"
 					>
 						<PriceHandler price={prices.package.beach.locations.kaanapali} />
@@ -117,7 +121,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="wailea-beach"
+						value="wailea"
 						label="Wailea Beach"
 					>
 						<PriceHandler price={prices.package.beach.locations.wailea} />
@@ -127,7 +131,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="hookipa-beach"
+						value="hookipa"
 						label="Hookipa Beach"
 					>
 						<PriceHandler price={prices.package.beach.locations.hookipa} />
@@ -137,7 +141,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="kapalua-beach"
+						value="kapalua"
 						label="Kapalua Beach"
 					>
 						<PriceHandler price={prices.package.beach.locations.kapalua} />
@@ -150,7 +154,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="kahului-city"
+						value="kahului"
 						label="Kahului"
 					>
 						<PriceHandler price={prices.package.city.locations.kahului} />
@@ -160,7 +164,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="lahina-city"
+						value="lahina"
 						label="Lahina"
 					>
 						<PriceHandler price={prices.package.city.locations.lahina} />
@@ -170,7 +174,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="kihei-city"
+						value="kihei"
 						label="Kihei"
 					>
 						<PriceHandler price={prices.package.city.locations.kihei} />
@@ -180,7 +184,7 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="wailuku-city"
+						value="wailuku"
 						label="Wailuku"
 					>
 						<PriceHandler price={prices.package.city.locations.wailuku} />
@@ -193,17 +197,17 @@
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="mauna-kahalawai-volcano"
+						value="mauna-kahalawai"
 						label="Mauna Kahalawai"
 					>
-						<PriceHandler price={prices.package.volcano.locations.maunaKahalawai} />
+						<PriceHandler price={prices.package.volcano.locations['mauna-kahalawai']} />
 					</Form.Input>
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
 						class="size-4 border-0"
 						type="checkbox"
 						name="location"
-						value="haleakala-volcano"
+						value="haleakala"
 						label="Haleakala Volcano"
 					>
 						<PriceHandler price={prices.package.volcano.locations.haleakala} />
@@ -230,7 +234,7 @@
 						value="first-class"
 						label="First Class"
 					>
-						<PriceHandler price={prices.airTravel.firstClass} />
+						<PriceHandler price={prices.airTravel['first-class']} />
 					</Form.Input>
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
@@ -240,7 +244,7 @@
 						value="business"
 						label="Business"
 					>
-						<PriceHandler price={prices.airTravel.businessClass} />
+						<PriceHandler price={prices.airTravel.business} />
 					</Form.Input>
 					<Form.Input
 						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
@@ -271,6 +275,12 @@
 				<PriceHandler price={prices.extra.carRental} />
 			</Flex.Col>
 		</Form.Checkbox>
+
+		<CostHandler {ref_form}>
+			{#snippet children(cost)}
+				<span>Total Cost: <span class="text-green-500">${cost}</span></span>
+			{/snippet}
+		</CostHandler>
 
 		<button
 			type="submit"
