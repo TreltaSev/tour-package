@@ -7,6 +7,7 @@
 	import type { InputProps } from '..';
 
 	let {
+		children,
 		class: className,
 		label,
 
@@ -37,6 +38,8 @@
 
 <!-- Container for both the label and the input component-->
 <Flex.Col class={ containerCls }>
+	{@render children?.()}
+	
 	<!-- only render a label if one is specified -->
 	{#if label}
 		<Span class={ labelCls }>{label}</Span> <!-- By default, this already has a mode:reactive color change-->
