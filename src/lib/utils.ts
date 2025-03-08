@@ -90,13 +90,13 @@ export class cn_a {
 	}
 }
 
-export function expand(node: HTMLElement, params: any, { duration = 300 }) {
+export function expand(node: HTMLElement, params: any, { duration = 300}) {
 	const height = node.scrollHeight;
 
 	return {
 		duration,
 		easing: params.easing || cubicOut,
-		css: (t: number) => `height: ${t * height}px; opacity: ${t}; margin-top: ${t * 8}px;`
+		css: (t: number) => `height: ${t * height}px; opacity: ${t}; margin-top: ${t * ((params.offset !== undefined) ? params.offset : 8)}px;`
 	};
 }
 

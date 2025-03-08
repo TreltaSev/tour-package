@@ -8,7 +8,7 @@
 	function onsubmit(event: SubmitEvent) {
 		if (!event.target) return;
 		const formData = parseForm(event.target as HTMLFormElement);
-		
+
 		const formString = serializeData(formData);
 
 		// Route to Payments
@@ -47,7 +47,7 @@
 
 		<Form.Input
 			type="number"
-			name="part-size"
+			name="party-size"
 			label="Party Size: "
 			value="1"
 			min="1"
@@ -57,41 +57,104 @@
 			required
 		/>
 
-		<!--Tour Package without option to select multiple-->
-		<label for="Tour-Package" style="color:white;">Select Tour Package:</label>
-		<select id="Tour-Package" name="Tour-Package" style="color: white;" bind:value={chosenPackage}>
-			<!--Fill out the options once we decide what we need to add-->
-			<option value="Beach" style="color: black;">Beach Package</option>
-			<option value="City" style="color: black;">City Package</option>
-			<option value="Volcano" style="color: black;">Volcano Package</option>
-		</select>
+		<!-- Tour Package Selector-->
+		<Flex.Col class="gap-2">
+			<label for="Tour-Package" style="color:white;">Select Tour Package:</label>
+			<select
+				name="package"
+				style="color: white;"
+				bind:value={chosenPackage}
+			>
+				<!--Fill out the options once we decide what we need to add-->
+				<option value="Beach" style="color: black;">Beach Package</option>
+				<option value="City" style="color: black;">City Package</option>
+				<option value="Volcano" style="color: black;">Volcano Package</option>
+			</select>
 
-		{#if chosenPackage == 'Beach'}
-			<fieldset>
-				<Form.Input
-					containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
-					labelClass="text-white/80"
-					class="size-4 border-0"
-					type="checkbox"
-					name="location"
-					value="kaanapali-beach"
-					label="Kaanapali Beach"
-				/>
-				<Form.Input
-					containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
-					labelClass="text-white/80"
-					class="size-4 border-0"
-					type="checkbox"
-					name="location"
-					value="wailea-beach"
-					label="Wailea Beach"
-				/>
-			</fieldset>
-		{:else if chosenPackage == 'City'}
-			<span>c</span>
-		{:else if chosenPackage == 'Volcano'}
-			<span>v</span>
-		{/if}
+			<!-- If Beach is Chosen-->
+			{#if chosenPackage == 'Beach'}
+				<fieldset transition:expand={{offset: 0}} class="flex flex-col mt-2">
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="kaanapali-beach"
+						label="Kaanapali Beach"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="wailea-beach"
+						label="Wailea Beach"
+					/>
+				</fieldset>
+			{:else if chosenPackage == 'City'}
+				<fieldset transition:expand={{offset: 0}} class="flex flex-col mt-2">
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="kahului-city"
+						label="Kahului"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="lahaina-city"
+						label="Lahaina"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="kihei-city"
+						label="Kihei"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="wailuku-city"
+						label="Wailuku"
+					/>
+				</fieldset>
+			{:else if chosenPackage == 'Volcano'}
+				<fieldset transition:expand={{offset: 0}} class="mt-2">
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="mauna-kahalawai-volcano"
+						label="Mauna Kahālāwai"
+					/>
+					<Form.Input
+						containerClass="flex-row-reverse items-center justify-end gap-2 pl-5"
+						labelClass="text-white/80"
+						class="size-4 border-0"
+						type="checkbox"
+						name="location"
+						value="haleakala-volcano"
+						label="Haleakalā Volcano"
+					/>
+				</fieldset>
+			{/if}
+		</Flex.Col>
 
 		<Flex.Col class="gap-0">
 			<Form.Checkbox

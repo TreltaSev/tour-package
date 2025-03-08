@@ -14,11 +14,11 @@ export function removeEmpty<T extends object>(obj: T): T {
 	const result = {} as T;
 	for (const key in obj) {
 		const value = obj[key];
-		if (value !== "") {
+		if (value !== '') {
 			result[key] = value;
 		}
 	}
-	return result
+	return result;
 }
 
 /**
@@ -40,60 +40,85 @@ export function clamp(value: number, min: number, max: number): number {
  * @returns The float (0-1) of how far value is between min and max.
  */
 export function getRelativePercentage(value: number, min: number, max: number): number {
-    return clamp(((value - min) / (max - min)), 0, 1);
+	return clamp((value - min) / (max - min), 0, 1);
 }
 
 // Gets all the inputted data from a form
 export function parseForm(target: HTMLFormElement): object {
 	const formData = new FormData(target);
 
-	const out = {}
+	const out = {} as any;
 
-	// TODO: Fix this :)
-	// for (const [value, key] in formData) {
-
-	// }
-
-	formData.forEach((value, key) => {
-		if (key in out) {
-			console.log("Included")
-
+	for (const [key, value] of formData) {
+		// Skip Empty Values
+		if (value === '' || value === undefined) {
+			continue;
 		}
-	})
-	console.log(Object.fromEntries(formData))
-	const formJson = removeEmpty(Object.fromEntries(formData));
-	throw new Error("Stop");
-	return formJson
+
+		// Duplicate Found, Set value to list if key isn't already
+		if (key in out && !Array.isArray(out[key])) {
+			out[key] = [out[key], value];
+			continue;
+		}
+
+		// Not a duplicate, singleton value so far
+		out[key] = value;
+	}
+
+	return out;
 }
 
 /**
  * Converts a object into a string
  * @param data Object
- * @returns 
+ * @returns
  */
 export function serializeData(data: any): string {
 	let result = '?type=form';
 	for (const key in data) {
 		const value = data[key];
-		result += `&${key}=${value}`
+
+		// Array-Like item
+		if (Array.isArray(value)) {
+			value.forEach((item) => {
+				result += `&${key}=${item}`;
+			});
+			continue;
+		}
+
+		// Singleton Item
+		result += `&${key}=${value}`;
 	}
-	return result
+	return result;
 }
 
 export function deserializeData(data: string): any {
-
 	// Make sure data isn't nothing
 	if (data === undefined) return;
 
-	const out = {} as any
+	const out = {} as any;
 
-	data = data.replace("?", "") // Remove first ?
-	const parts = data.split("&")
+	data = data.replace('?', ''); // Remove first ?
+	const parts = data.split('&');
 
-	parts.forEach(subpart => {
-		const [key, value] = subpart.split("=")
-		out[key] = value
-	})
+	parts.forEach((subpart) => {
+		const [key, value] = subpart.split('=');
 
-	return out
+		// Make out an array
+		if (key in out && !Array.isArray(out[key])) {
+			// Array Value
+			out[key] = [out[key]];
+		}
+
+		if (key in out) {
+			if (Array.isArray(out[key])) {
+				out[key].push(value);
+			}
+		} else {
+			// Not array
+			out[key] = value;
+		}
+	});
+
+	return out;
 }
