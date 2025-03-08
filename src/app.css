@@ -97,6 +97,10 @@
 		@apply text-gray-900 dark:text-white;
 		font-family: Lato, 'Courier New', Courier, monospace;
 	}
+
+	button, fieldset *, form span, select, option {
+		user-select: none;
+	}
 }
 
 /*
@@ -194,6 +198,7 @@
 	.text-subtle {
 		color: rgba(0, 0, 0, 0.8);
 	}
+
 	.dark .text-subtle {
 		color: rgba(255, 255, 255, 0.8);
 	}
@@ -280,3 +285,9 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@media (prefers-color-scheme: dark) {
+    html, body {
+        color: unset;
+    }
+}

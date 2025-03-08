@@ -25,7 +25,7 @@ export default {
             base: 400,
             locations: {
                 kahului: 200,
-                lahaina: 210,
+                lahina: 210,
                 kihei: 220,
                 wailuku: 230
             }
