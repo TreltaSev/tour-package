@@ -98,9 +98,9 @@
 			<label for="Tour-Package">Select Tour Package:</label>
 			<select name="tour-package" bind:value={chosenPackage}>
 				<!--Fill out the options once we decide what we need to add-->
-				<option value="beach">Beach Package</option>
-				<option value="city">City Package</option>
-				<option value="volcano">Volcano Package</option>
+				<option class="text-black" value="beach">Beach Package</option>
+				<option class="text-black" value="city">City Package</option>
+				<option class="text-black" value="volcano">Volcano Package</option>
 			</select>
 
 			<!-- If Beach is Chosen-->
@@ -278,7 +278,7 @@
 
 		<CostHandler {ref_form}>
 			{#snippet children(cost)}
-				<span>Total Cost: <span class="text-green-500">${cost}</span></span>
+				<span class="text-black">Total Cost: <span class="text-green-500">${cost}</span></span>
 			{/snippet}
 		</CostHandler>
 

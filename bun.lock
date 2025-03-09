@@ -13,7 +13,10 @@
       "devDependencies": {
         "@eslint/compat": "^1.2.5",
         "@eslint/js": "^9.18.0",
+        "@iconify-json/cib": "^1.2.2",
+        "@iconify-json/flat-color-icons": "^1.2.1",
         "@iconify-json/ic": "^1.2.2",
+        "@iconify-json/logos": "^1.2.4",
         "@iconify-json/majesticons": "^1.2.2",
         "@iconify-json/material-symbols": "^1.2.14",
         "@iconify-json/mdi": "^1.2.3",
@@ -21,6 +24,7 @@
         "@iconify-json/pajamas": "^1.2.5",
         "@iconify-json/solar": "^1.2.2",
         "@iconify-json/tabler": "^1.2.16",
+        "@iconify-json/token": "^1.2.14",
         "@iconify-json/weui": "^1.2.2",
         "@sveltejs/adapter-static": "^3.0.8",
         "@sveltejs/kit": "^2.16.0",
@@ -130,7 +134,13 @@
 
     "@humanwhocodes/retry": ["@humanwhocodes/retry@0.4.1", "", {}, "sha512-c7hNEllBlenFTHBky65mhq8WD2kbN9Q6gk0bTk8lSBvc554jpXSkST1iePudpt7+A/AQvuHs9EMqjHDXMY1lrA=="],
 
+    "@iconify-json/cib": ["@iconify-json/cib@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-WevYDdIm0x3I3YZyoIgdSu4uurbzs2b2gsMLUj8/EMKMoPIx6GF+t0VcaCgFY4a0rIdUY18MYP6m9XgcOhOtFg=="],
+
+    "@iconify-json/flat-color-icons": ["@iconify-json/flat-color-icons@1.2.1", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-iv1NQai4ThVJf5RGB2UBY/EYG4P5KpdnRTUM1hqLweD6OmWxZUyNJkqLzwns6/t+VBYM0H5gS/ckSWyxxEIYmQ=="],
+
     "@iconify-json/ic": ["@iconify-json/ic@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-QmjwS3lYiOmVWgTCEOTFyGODaR/+689+ajep/VsrCcsUN0Gdle5PmIcibDsdmRyrOsW/E77G41UUijdbjQUofw=="],
+
+    "@iconify-json/logos": ["@iconify-json/logos@1.2.4", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-XC4If5D/hbaZvUkTV8iaZuGlQCyG6CNOlaAaJaGa13V5QMYwYjgtKk3vPP8wz3wtTVNVEVk3LRx1fOJz+YnSMw=="],
 
     "@iconify-json/majesticons": ["@iconify-json/majesticons@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-hFZb/XYr2b/jW5DPpr7He0wm8iyORkryjxIiBFB8iyecpEXA1vp6ALyxN5LlKKhQ9yqhICeQ7uYWEMbwkXkRCg=="],
 
@@ -145,6 +155,8 @@
     "@iconify-json/solar": ["@iconify-json/solar@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-lcTb6DWL4HZObiY1W3fHfuxxuQHUc6CFHFeywKEx7Ry0k+dU6POZCMC7oVLr0F8vuf+KgaQ3oOoGO/yFzOwrNg=="],
 
     "@iconify-json/tabler": ["@iconify-json/tabler@1.2.16", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-gjvKz38+aOxfZtRvycYrASYipCsHRbCZ/Df49T0tfPntT0ur+qsgJ7PxCM4JF/Xs6+n3JkaFdiUz/N4ZZxDKdQ=="],
+
+    "@iconify-json/token": ["@iconify-json/token@1.2.14", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-QbpJPEuppjFe5siIUcA5Y3jGyGckTP66nUkzb5XTDFDShdXmaIBb+utnpZHbn21Vf4JW6SNR38FpXZWUKsJSWg=="],
 
     "@iconify-json/weui": ["@iconify-json/weui@1.2.2", "", { "dependencies": { "@iconify/types": "*" } }, "sha512-N1osy+KRtucMrJmW3WcaJSBDpJPyeLcUSNko+U2MgzUju2adr7wF+nSs8aG3/9z0Cy1x66H/5xw8xUAVPxtFJQ=="],
 
