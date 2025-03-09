@@ -4,13 +4,13 @@
 	import { Card } from '@components';
 
 	// --- Images
-	import Image_MauiBeaches1 from '@assets/backdrop/mauies-1.jpg';
+	import Image_MauiBeaches1 from '@assets/backdrop/maui-beaches-1.jpg';
 
 	// --- --- Package Images
-	import Image_PackageBeach1 from '@assets/backdrop/maui-p-1.png';
-	import Image_PackageBeach2 from '@assets/backdrop/maui-p-2.png';
-	import Image_PackageBeach3 from '@assets/backdrop/maui-p-3.png';
-	import Image_PackageBeach4 from '@assets/backdrop/maui-p-4.png';
+	import Image_PackageBeach1 from '@assets/backdrop/maui-p-beach-1.png';
+	import Image_PackageBeach2 from '@assets/backdrop/maui-p-beach-2.png';
+	import Image_PackageBeach3 from '@assets/backdrop/maui-p-beach-3.png';
+	import Image_PackageBeach4 from '@assets/backdrop/maui-p-beach-4.png';
 
 	// --- Logic
 	import { clamp } from '@root/lib/internal';
