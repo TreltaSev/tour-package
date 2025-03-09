@@ -43,7 +43,7 @@
 		<Drawer.Root active={true}>
 			<Drawer.Menu>
 				<Drawer.Item href="/">
-					<IconHome class="size-6 shrink-0" />
+					<IconHome class="size-6 shrink-0" onclick={() => {window.location.replace('https://www.youtube.com/watch?v=xvFZjo5PgG0')}} />
 					{#snippet slot_text()}
 						<Span class="text-inherit">Home</Span>
 					{/snippet}
