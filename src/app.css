@@ -98,7 +98,11 @@
 		font-family: Lato, 'Courier New', Courier, monospace;
 	}
 
-	button, fieldset *, form span, select, option {
+	button,
+	fieldset *,
+	form span,
+	select,
+	option {
 		user-select: none;
 	}
 }
@@ -127,8 +131,8 @@
 	--color-primary-1000: #00070a;
 
 	/* Semantic Colors */
-	--color-green: #52FF72;
-	--color-red: #FF6052;
+	--color-green: #52ff72;
+	--color-red: #ff6052;
 }
 /*
 ------------------ UTILITIES ------------------ 
@@ -287,7 +291,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @media (prefers-color-scheme: dark) {
-    html, body {
-        color: unset;
-    }
+	html,
+	body {
+		color: unset;
+	}
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+	/* Revert text color */
+	-webkit-text-fill-color: black white !important;
+	color: white !important;
+	caret-color: white !important;
+
+	/* Revert background color */
+	transition: background-color 5000s ease-in-out 0s;
 }

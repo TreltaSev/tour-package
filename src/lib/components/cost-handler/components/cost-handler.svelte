@@ -1,101 +1,114 @@
 <script lang="ts">
-    // @ts-nocheck
+	// @ts-nocheck
 
-    // --- Logic ---
-    import { cn } from '@lib/utils';
-    import type { Props } from ".."
+	// --- Logic ---
+	import { cn } from '@lib/utils';
+	import type { Props } from '..';
 	import { getContext, onMount } from 'svelte';
 	import { get, type Writable } from 'svelte/store';
 	import { clamp, parseForm } from '@root/lib/internal';
 	import prices from '@root/lib/internal/prices';
-    
-    let {
-        children,
-        class: className,
-        costHandlerClass = $bindable(''),
-        ref_form,
-    }: Props = $props();
 
+	let { children, class: className, costHandlerClass = $bindable(''), ref_form }: Props = $props();
 
-    // Setup CostHandler's class
-    let costHandlerCls = $state(cn(costHandlerClass, className));
-    $effect(() => {
-        costHandlerCls = cn(costHandlerClass, className)
-    })
+	// Setup CostHandler's class
+	let costHandlerCls = $state(cn(costHandlerClass, className));
+	$effect(() => {
+		costHandlerCls = cn(costHandlerClass, className);
+	});
 
-    let outcost = $state(0)
+	let outcost = $state(0);
 
-    const { ref$ } = getContext('form-data') as { ref$: Writable<HTMLFormElement | undefined> };
+	const { ref$ } = getContext('form-data') as { ref$: Writable<HTMLFormElement | undefined> };
 
-    function onchange(event: any) {
-        const form = get(ref$) as HTMLFormElement
-        const formData = parseForm(form) as any
-        
-        let cost = 0
-        let _package = formData['tour-package']
-        let _location = formData['location']
-        let _partySize = formData['party-size'] || 1
-        let _airType = formData['air-type']
+	function onchange(event: any) {
+		const form = get(ref$) as HTMLFormElement;
+		const formData = parseForm(form) as any;
 
-        // Handle Package
-        if (_package) {
-            cost += prices.package[_package].base;
-        }
+		let cost = 0;
+		let _package = formData['tour-package'];
+		let _location = formData['location'];
+		let _partySize = formData['party-size'] || 1;
+		let _airType = formData['air-type'];
 
+		// Handle Location
+		if (_location) {
+			if (!Array.isArray(_location)) {
+				_location = [_location];
+			}
+			_location.forEach((element) => {
+				if (element in prices.package[_package].locations) {
+					cost += prices.package[_package].locations[element] * _partySize;
+				}
+			});
+			sessionStorage.setItem('cost-location', cost);
+		} else {
+			sessionStorage.removeItem('cost-location');
+		}
 
-        // Handle Location
-        if (_location) {
-            if (!Array.isArray(_location)) {_location = [_location]}
-            _location.forEach(element => {
-                if (element in prices.package[_package].locations) {
-                    cost += prices.package[_package].locations[element] * _partySize
-                }
-            });
-        } 
+		// Handle Package
+		if (_package) {
+			sessionStorage.setItem('cost-package', prices.package[_package].base * _partySize);
+			cost += prices.package[_package].base * _partySize;
+		} else {
+			sessionStorage.removeItem('cost-package');
+		}
 
-        // Handle Air Travel
-        if (_airType) {
-            cost += (prices.airTravel[_airType] || 0) * _partySize
-        }
+		// Handle Air Travel
+		if (_airType) {
+			sessionStorage.setItem('cost-air', (prices.airTravel[_airType] || 0) * _partySize);
+			cost += (prices.airTravel[_airType] || 0) * _partySize;
+		} else {
+			sessionStorage.removeItem('cost-air');
+		}
 
-        // Handle Extras
-        if (formData['meals'] == 'yes') {
-            cost += prices.extra.meals
-        }
+		// Handle Extras
+		if (formData['meals'] == 'yes') {
+			sessionStorage.setItem('cost-meals', prices.extra.meals * _partySize);
+			cost += prices.extra.meals;
+		} else {
+			sessionStorage.removeItem('cost-meals');
+		}
 
-        if (formData['wine'] == 'yes') {
-            cost += prices.extra.eveningWine * (Math.ceil(_partySize / 4))
-        }
+		if (formData['wine'] == 'yes') {
+			sessionStorage.setItem('cost-wine', prices.extra.eveningWine * Math.ceil(_partySize / 4));
+			cost += prices.extra.eveningWine * Math.ceil(_partySize / 4);
+		} else {
+			sessionStorage.removeItem('cost-wine');
+		}
 
-        if (formData['car'] == 'yes') {
-            cost += prices.extra.carRental * (Math.ceil(_partySize / 4))
-        }
+		if (formData['car'] == 'yes') {
+			sessionStorage.setItem('cost-car', prices.extra.carRental * Math.ceil(_partySize / 4));
+			cost += prices.extra.carRental * Math.ceil(_partySize / 4);
+		} else {
+			sessionStorage.removeItem('cost-car');
+		}
 
-        outcost = cost
+		outcost = cost;
 
-    }
+		sessionStorage.setItem('total-cost', cost);
+        sessionStorage.setItem('party-size', _partySize)
+	}
 
-    function delayedChange() {
-        setTimeout(() => {
-            onchange()
-        }, 10)
-    }
+	function delayedChange() {
+		setTimeout(() => {
+			onchange();
+		}, 10);
+	}
 
-    onMount(() => {
-        const interval = setInterval(() => {
-            if (!ref$ || get(ref$) == undefined) return;
-            (get(ref$) as any).addEventListener("change", delayedChange)
-            clearInterval(interval)
-        })
-    })
-
+	onMount(() => {
+		const interval = setInterval(() => {
+			if (!ref$ || get(ref$) == undefined) return;
+			(get(ref$) as any).addEventListener('change', delayedChange);
+			clearInterval(interval);
+		});
+	});
 </script>
 
-<div class={ costHandlerCls }>
-    {@render children?.(outcost)}
+<div class={costHandlerCls}>
+	{@render children?.(outcost)}
 </div>
 
 <!--@component
     Generated by SvelteForge🔥
 -->
-
