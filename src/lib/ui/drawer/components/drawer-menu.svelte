@@ -51,7 +51,12 @@
 				transition:fade={{ duration: 200 }}
 				class="absolute left-8 size-10 flex flex-col items-center justify-center overflow-hidden"
 			>
-				<IconLogo class="size-14 shrink-0 opacity-99" />
+				<IconLogo
+					class="size-14 shrink-0 opacity-99"
+					onclick={() => {
+						window.location.replace('https://www.youtube.com/watch?v=xvFZjo5PgG0');
+					}}
+				/>
 			</div>
 		{/if}
 		<Drawer.Hamburger class="z-1" />
