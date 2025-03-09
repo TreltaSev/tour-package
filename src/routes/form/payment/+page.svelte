@@ -58,6 +58,20 @@
 		return data['location'];
 	}
 
+	function generateRandomString(): string {
+		const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+		let result = '';
+		for (let i = 0; i < 16; i++) {
+			result += characters.charAt(Math.floor(Math.random() * characters.length));
+		}
+		return result;
+	}
+
+	function route_to_success() {
+		sessionStorage.setItem("pay-id", generateRandomString())
+		window.location.href=`${base}/form/payment/success`
+	}
+
 	let ref_form: HTMLFormElement | undefined;
 
 	type tPackageData = keyof typeof prices.package;
@@ -184,6 +198,7 @@
 		<Form.Root
 			bind:ref={ref_form}
 			class="flex flex-col gap-6 bg-white p-5 rounded-[20px] h-fill overflow-y-scroll no-scrollbar box-border"
+			onsubmit={route_to_success}
 		>
 			<!-- Apple Pay -->
 			{@render special_payment('bg-black text-white/80', IconApple)}
@@ -210,7 +225,7 @@
 				'items-center gap-3',
 				'',
 				[IconVisa, IconMasterCard, IconAmex],
-				'',
+				undefined,
 				19,
 				'numeric'
 			)}
@@ -220,11 +235,11 @@
 				{@render payment_input(
 					'CVC',
 					'card-cvc',
-					'tel',
+					'text',
 					'justify-between w-full items-center py-1.5 box-border',
 					'w-full',
 					[IconCVC],
-					'',
+					undefined,
 					4,
 					'numeric'
 				)}
