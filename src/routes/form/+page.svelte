@@ -59,9 +59,9 @@
 	<title>form</title>
 </svelte:head>
 
-<Flex.Col class="size-full items-center justify-center py-20">
+<Flex.Col class="w-full h-full gap-10 items-center justify-center pt-20">
 	<Form.Root  
-		class="p-20 bg-white h-full w-120 max-w-3/4 gap-8 overflow-y-scroll no-scrollbar rounded-md shadow-md"
+		class="p-20 bg-white h-fit w-120 max-w-3/4 gap-8 overflow-y-scroll no-scrollbar rounded-md shadow-md"
 		{onsubmit}
 		bind:ref={ref_form}
 	>
@@ -288,4 +288,7 @@
 			class="text-white px-6 py-2 rounded-sm bg-primary-600 cursor-pointer">Process Request</button
 		>
 	</Form.Root>
+	<footer class="bg-primary-1000 w-full h-[10%] flex flex-row items-center justify-center">
+		<span>© 2025. All Rights Reserved</span>
+	</footer>
 </Flex.Col>
