@@ -166,7 +166,7 @@
 			<h2>Air Travel</h2>
 			{#each filterObject(getCosts(), ['air']) as [key, cost]}
 				<section>
-					<h3>{data['air-type']} (Round Drip)</h3>
+					<h3>{data['air-type']} (Round Trip)</h3>
 					<h4>+${cost}</h4>
 				</section>
 			{/each}
